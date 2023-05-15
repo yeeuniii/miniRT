@@ -15,9 +15,11 @@ void	checking_argv(char *tmp, t_lights *l, t_shapes *s);
 
 //utils
 int			ft_strcmp(char *s1, char *s2);
+int			ft_isspace(char c);
+int			check_space_and_digit(char *str);
 double		ft_atof(char *str);
 double		check_all_atof(char *str);
+t_colors	check_color_argv(char *str);
 t_shapes	*ft_lstlast(t_shapes *lst);
-
 
 #endif

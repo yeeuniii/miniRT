@@ -6,13 +6,14 @@
 #    By: junyoung <junyoung@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/11 11:11:53 by junyoung          #+#    #+#              #
-#    Updated: 2023/05/13 14:32:18 by junyoung         ###   ########seoul.kr   #
+#    Updated: 2023/05/15 18:15:52 by junyoung         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
 
 SRCS = ft_split.c\
-		ft_atoi.c
+		ft_atoi.c\
+		ft_isdigit.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -7,6 +7,7 @@ SRCS = main.c\
 		srcs/get_next_line_utils.c\
 		srcs/get_next_line.c\
 		srcs/utils.c\
+		srcs/utils2.c\
 		srcs/init_function.c\
 		srcs/init_function2.c\
 		srcs/check_utils.c

@@ -46,7 +46,6 @@ t_vec	atof_vector(char *str)
 	char **dest;
 	
 	dest = ft_split(str, ',');//예외처리 할 것, 프리 할 것
-	//tmp = (t_vec *)malloc(sizeof(t_vec) * 1);
 	tmp.x = check_all_atof(dest[0]);
 	tmp.y = check_all_atof(dest[1]);
 	tmp.z = check_all_atof(dest[2]);

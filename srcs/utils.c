@@ -1,4 +1,5 @@
 #include "../include/main.h"
+#include "../include/utils.h"
 
 int	ft_strlen(char *str)
 {
@@ -18,6 +19,13 @@ int	ft_strcmp(char *s1, char *s2)
 	while (s1[i] != '\0' && s2[i] != '\0' && s1[i] == s2[i])
 		i++;
 	return (s1[i] - s2[i]);
+}
+
+int	ft_isspace(char c)
+{
+	if ((c >= 9 && c <= 13) || c == 32)
+		return (1);
+	return (0);
 }
 
 double ft_atof(char *str)
