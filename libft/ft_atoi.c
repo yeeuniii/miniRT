@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junyoung <junyoung@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/10 12:37:40 by junyoung          #+#    #+#             */
-/*   Updated: 2023/05/13 12:02:33 by junyoung         ###   ########seoul.kr  */
+/*   Created: 2022/07/18 00:25:40 by junyoung          #+#    #+#             */
+/*   Updated: 2022/08/10 11:02:48 by junyoung         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+int	ft_atoi(const char *str)
+	{
+	int			i;
+	int			sign;
+	long long	num;
 
-char	*get_next_line(int fd);
-
-size_t	ft_strlen2(const char *str);
-char	*ft_strdup2(char *src);
-char	*ft_strjoin(char *s1, char *s2);
-int		ft_strchr(const char *str, int c);
-void	all_free(char *src);
-
-#endif
+	i = 0;
+	num = 0;
+	sign = 1;
+	while ((str[i] > 8 && str[i] < 14) || str[i] == 32)
+		i++;
+	if (str[i] == '-')
+		sign *= -1;
+	if (str[i] == '+' || str[i] == '-')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		num = num * 10 + str[i] - '0';
+		i++;
+	}
+	return (num * sign);
+}

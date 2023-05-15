@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junyoung <junyoung@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/10 12:37:40 by junyoung          #+#    #+#             */
-/*   Updated: 2023/05/13 12:02:33 by junyoung         ###   ########seoul.kr  */
+/*   Created: 2022/07/18 21:52:58 by junyoung          #+#    #+#             */
+/*   Updated: 2023/05/13 14:49:08 by junyoung         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef LIBFT_H
+# define LIBFT_H
 
-char	*get_next_line(int fd);
+# include <stdlib.h>
 
-size_t	ft_strlen2(const char *str);
-char	*ft_strdup2(char *src);
-char	*ft_strjoin(char *s1, char *s2);
-int		ft_strchr(const char *str, int c);
-void	all_free(char *src);
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}	t_list;
+
+int				ft_atoi(const char *str);
+
+char			**ft_split(char const *s, char c);
 
 #endif

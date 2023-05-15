@@ -1,4 +1,4 @@
-#include "../include/get_next_line.h"
+#include "../include/main.h"
 
 size_t	ft_strlen2(const char *str)
 {
