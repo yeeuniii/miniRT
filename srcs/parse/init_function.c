@@ -1,5 +1,5 @@
-#include "../include/main.h"
-#include "../include/utils.h"
+#include "../../include/main.h"
+#include "../../include/utils.h"
 
 void	init_argv(int ac, char **av, t_lights *l, t_shapes *s)
 {
