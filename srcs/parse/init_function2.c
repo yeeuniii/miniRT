@@ -91,7 +91,7 @@ void	init_cylinder(char **str, t_shapes *s)
 	cyl->identifier = cy;
 	cyl->center = atof_vector(str[1]);
 	cyl->vector_axis_range = atof_vector(str[2]);
-	if (check_vector_range(cyl->vector_axis_range))
+	if (!check_vector_range(cyl->vector_axis_range))
 		error_exit("Incorrectly entered vector_axis_range\n");
 	cyl->diameter = ft_atof(str[3]);
 	cyl->height = ft_atof(str[4]);
