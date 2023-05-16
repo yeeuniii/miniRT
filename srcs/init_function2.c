@@ -9,7 +9,7 @@ void	init_camera(char **str, t_lights *l)
 	c->identifier = C;
 	c->v_point = atof_vector(str[1]);
 	c->o_vector_range = atof_vector(str[2]);//범위 체킹 함수 추가할 것
-	c->fov = ft_atoi(str[3]); //범위에 대한 체킹함수 추가할 것	
+	c->fov = ft_atoi(str[3]);	
 	l->camera = c;
 }
 

@@ -6,7 +6,7 @@
 #    By: junyoung <junyoung@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/11 11:11:53 by junyoung          #+#    #+#              #
-#    Updated: 2023/05/15 18:15:52 by junyoung         ###   ########seoul.kr   #
+#    Updated: 2023/05/16 13:47:22 by junyoung         ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,17 +28,17 @@ all : ${NAME}
 ${NAME} : ${OBJS}
 
 %.o : %.c
-	${CC} ${CFLAGS} -include ./libft.h  -o $@ -c $<
-	ar rcs ${NAME} $@
+	@${CC} ${CFLAGS} -include ./libft.h  -o $@ -c $<
+	@ar rcs ${NAME} $@
 
 clean :
-	${RM} ${OBJS}
+	@${RM} ${OBJS}
 
 fclean : clean
-	${RM} ${NAME}
+	@${RM} ${NAME}
 
 re :
-	make fclean
-	make all
+	@make fclean
+	@make all
 
 .PHONY : all clean fclean re

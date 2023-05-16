@@ -20,7 +20,7 @@ typedef struct s_colors
 typedef struct s_ambient
 {
 	int			identifier; //식별자
-	double		l_range; 	//주변조명 비율
+	double		l_range; 	//주변조명 비율 0.0~1.0
 	t_colors	colors;
 
 }	t_ambient;
@@ -35,7 +35,7 @@ typedef struct s_camera
 
 typedef struct s_light
 {
-	char		identifier; 	// 식별자
+	int			identifier; 	// 식별자
 	t_vec		l_point;		// 빛이 위치한 좌표
 	double		bright_range;	// 빛의 밝기 비율
 	t_colors	colors;
@@ -44,7 +44,7 @@ typedef struct s_light
 
 typedef struct s_sphere
 {
-	char		identifier;	//식별자
+	int			identifier;	//식별자
 	t_vec		s_center;	//구 중심 좌표
 	double		s_diameter;	//구의 지름
 	t_colors	colors;
@@ -53,7 +53,7 @@ typedef struct s_sphere
 
 typedef struct s_plane
 {
-	char		identifier;		//식별자
+	int			identifier;		//식별자
 	t_vec		p_point;		//평면위의 한 점의 좌표
 	t_vec		n_vector_range;	//3차원 정규화 법선 벡터
 	t_colors	colors;
@@ -62,7 +62,7 @@ typedef struct s_plane
 
 typedef struct s_cylinder
 {
-	char		identifier;	//식별자
+	int			identifier;	//식별자
 	t_vec		center;		//원기둥 중심점의 좌표
 	t_vec		vector_axis_range;	//3차원 정규화 원기둥 축 벡터
 	double		diameter;	//원기둥 지름

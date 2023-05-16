@@ -22,4 +22,8 @@ double		check_all_atof(char *str);
 t_colors	check_color_argv(char *str);
 t_shapes	*ft_lstlast(t_shapes *lst);
 
+//error_fuctions
+
+void	error_exit(char *str);
+
 #endif

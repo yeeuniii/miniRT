@@ -55,14 +55,12 @@ t_vec	atof_vector(char *str)
 void	init_ambient(char **str, t_lights *l)
 {
 	t_ambient	*a;
-	char		**tmp;
 
 	a = (t_ambient *)malloc(sizeof(t_ambient) * 1);
 	a->identifier = A;
-	a->l_range = ft_atof(str[1]); // 추후 체킹함수로 변경할 것
-	tmp = ft_split(str[2], ','); // 추후 변경할 것
-	a->colors.r = ft_atoi(tmp[0]);
-	a->colors.g = ft_atoi(tmp[1]);
-	a->colors.b = ft_atoi(tmp[2]);
+	a->l_range = check_all_atof(str[1]);
+	if (a->l_range < 0 || a->l_range > 1.0)
+		error_exit("l_range only 0.0~1.0\n"); 
+	a->colors = check_color_argv(str[2]);
 	l->ambient = a;
 }
