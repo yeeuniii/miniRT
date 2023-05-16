@@ -1,5 +1,5 @@
-#include "include/main.h"
-#include "include/utils.h"
+#include "../include/main.h"
+#include "../include/utils.h"
 
 void	test_lights(t_lights *l)
 {

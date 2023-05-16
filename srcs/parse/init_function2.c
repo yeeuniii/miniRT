@@ -1,5 +1,5 @@
-#include "../include/main.h"
-#include "../include/utils.h"
+#include "../../include/main.h"
+#include "../../include/utils.h"
 
 void	init_camera(char **str, t_lights *l)
 {

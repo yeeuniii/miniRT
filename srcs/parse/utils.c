@@ -1,5 +1,5 @@
-#include "../include/main.h"
-#include "../include/utils.h"
+#include "../../include/main.h"
+#include "../../include/utils.h"
 
 int	ft_strlen(char *str)
 {
