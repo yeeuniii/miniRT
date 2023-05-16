@@ -29,15 +29,15 @@ typedef struct s_camera
 {
 	int	identifier; 	//식별자
 	t_vec	v_point;		//뷰포인트 시야점 좌표
-	t_vec	o_vector_range;	//3D 정규화 방향 벡터
-	int		fov; 			// 수평시야각
+	t_vec	o_vector_range;	//3D 정규화 방향 벡터 -1~1
+	int		fov; 			// 수평시야각 0~180
 }	t_camera;
 
 typedef struct s_light
 {
 	int			identifier; 	// 식별자
 	t_vec		l_point;		// 빛이 위치한 좌표
-	double		bright_range;	// 빛의 밝기 비율
+	double		bright_range;	// 빛의 밝기 비율 0.0~1.0
 	t_colors	colors;
 
 }	t_light;
@@ -55,7 +55,7 @@ typedef struct s_plane
 {
 	int			identifier;		//식별자
 	t_vec		p_point;		//평면위의 한 점의 좌표
-	t_vec		n_vector_range;	//3차원 정규화 법선 벡터
+	t_vec		n_vector_range;	//3차원 정규화 법선 벡터 -1~1
 	t_colors	colors;
 
 }	t_plane;
@@ -64,7 +64,7 @@ typedef struct s_cylinder
 {
 	int			identifier;	//식별자
 	t_vec		center;		//원기둥 중심점의 좌표
-	t_vec		vector_axis_range;	//3차원 정규화 원기둥 축 벡터
+	t_vec		vector_axis_range;	//3차원 정규화 원기둥 축 벡터 -1~1
 	double		diameter;	//원기둥 지름
 	double		height;		//원기둥 높이
 	t_colors	colors;

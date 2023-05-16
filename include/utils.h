@@ -17,6 +17,7 @@ void	checking_argv(char *tmp, t_lights *l, t_shapes *s);
 int			ft_strcmp(char *s1, char *s2);
 int			ft_isspace(char c);
 int			check_space_and_digit(char *str);
+int			check_vector_range(t_vec v);
 double		ft_atof(char *str);
 double		check_all_atof(char *str);
 t_colors	check_color_argv(char *str);

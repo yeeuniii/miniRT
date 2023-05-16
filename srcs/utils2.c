@@ -37,3 +37,12 @@ int	check_space_and_digit(char *str)
 	}
 	return (1);
 }
+
+int	check_vector_range(t_vec v)
+{
+	if ((v.x < -1.0 || v.x > 1.0) || \
+		(v.y < -1.0 || v.y > 1.0) || \
+		(v.z < -1.0 || v.z > 1.0))
+		return (0);
+	return (1);
+}
