@@ -1,16 +1,7 @@
 #ifndef STRUCT_H
 # define STRUCT_H
 
-typedef struct s_vector	t_vector;
-typedef struct s_vector	t_point;
-
-struct s_vector
-{
-	double	x;
-	double	y;
-	double	z;
-
-};
+# include "vector.h"
 
 typedef struct s_color
 {
@@ -31,7 +22,7 @@ typedef struct s_camera
 {
 	t_point		origin;		//뷰포인트 시야점 좌표
 	t_vector	direct;		//3D 정규화 방향 벡터 -1~1
-	int			fov; 		// 수평시야각 0~180
+	double		fov; 		// 수평시야각 0~180
 }	t_camera;
 
 typedef struct s_light
