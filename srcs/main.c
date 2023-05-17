@@ -57,7 +57,7 @@ void	test_shapes(t_objects *s)
 			cyl = (t_cylinder *)tmp->object;
 			printf("cylinder\n");
 			printf("center %.1f,%.1f,%.1f \n", cyl->center.x, cyl->center.y, cyl->center.z);
-			printf("vector_axis_range %.1f,%.1f,%.1f \n", cyl->normal.x, cyl->normal.y, cyl->normal.z);
+			printf("vector_axis_range %.1f,%.1f,%.1f \n", cyl->direct.x, cyl->direct.y, cyl->direct.z);
 			printf("diameter %.1f\n", cyl->diameter);
 			printf("height %.1f \n", cyl->height);
 			printf("colors %d,%d,%d\n\n", cyl->color.r, cyl->color.g, cyl->color.b);
