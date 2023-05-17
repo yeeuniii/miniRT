@@ -24,6 +24,7 @@ static int	destroy_game(t_mlx *m)
 void	init_mlx(t_mlx *m)
 {
 	t_screen	screen;
+	t_data		data;
 
 	screen.width = WIDTH;
 	screen.height = HEIGHT;
@@ -31,6 +32,10 @@ void	init_mlx(t_mlx *m)
 	m->screen = screen;
 	m->mlx = mlx_init();
 	m->win = mlx_new_window(m->mlx, screen.width, screen.height, "miniRT");
+	data.image = mlx_new_image(m->mlx, screen.width, screen.height);
+	data.addr = mlx_get_data_addr(data.image, &data.bits_per_pixel,
+			&data.size_line, &data.endian);
+	m->data = data;
 	mlx_key_hook(m->win, key_press, m);
 	mlx_hook(m->win, ON_DESTROY, 0, destroy_game, m);
 }

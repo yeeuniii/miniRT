@@ -50,11 +50,22 @@ typedef struct s_screen
 	double	aspect_ratio;
 }	t_screen;
 
+typedef struct s_data
+{
+	void	*image;
+	char	*addr;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
+}	t_data;
+
 typedef struct	s_mlx
 {
 	void		*mlx;
 	void		*win;
+	t_data		data;
 	t_screen	screen;
 }	t_mlx;
+
 
 #endif
