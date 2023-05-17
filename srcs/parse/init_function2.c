@@ -29,6 +29,13 @@ void	init_light(char **str, t_lights *l)
 	l->light = light;
 }
 
+void	init_object(int	type, void *object, t_objects *o)
+{
+	o->type = type;
+	o->object = object;
+	o->next = NULL;
+}
+
 void	init_sphere(char **str, t_objects *s)
 {
 	t_objects	*shape;
@@ -42,13 +49,11 @@ void	init_sphere(char **str, t_objects *s)
 	tmp = ft_lstlast(s);
 	if (!tmp)
 	{
-		s->type = SPHERE;
-		s->object = (void *)sphere;
+		init_object(SPHERE, sphere, s);
 		return ;
 	}
 	shape = (t_objects *)malloc(sizeof(t_objects) * 1);
-	shape->type = SPHERE;
-	shape->object = (void *)sphere;
+	init_object(SPHERE, sphere, shape);
 	tmp->next = shape;
 }
 
@@ -67,13 +72,11 @@ void	init_plane(char **str, t_objects *s)
 	tmp = ft_lstlast(s);
 	if (!tmp)
 	{
-		s->type = PLANE;
-		s->object = (void *)plane;
+		init_object(PLANE, plane, s);
 		return ;
 	}
 	shape = (t_objects *)malloc(sizeof(t_objects) * 1);
-	shape->type = PLANE;
-	shape->object = (void *)plane;
+	init_object(PLANE, plane, shape);
 	tmp->next = shape;
 }
 
@@ -94,12 +97,10 @@ void	init_cylinder(char **str, t_objects *s)
 	tmp = ft_lstlast(s);
 	if (!tmp)
 	{
-		s->type = CYLINDER;
-		s->object = (void *)cyl;
+		init_object(CYLINDER, cyl, s);
 		return ;
 	}
 	shape = (t_objects *)malloc(sizeof(t_objects) * 1);
-	shape->type = CYLINDER;
-	shape->object = (void *)cyl;
+	init_object(CYLINDER, cyl, shape);
 	tmp->next = shape;
 }
