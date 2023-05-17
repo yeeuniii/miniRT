@@ -25,8 +25,8 @@ typedef struct s_camera
 	double		fov; 		// 수평시야각 0~180
 	double		viewport_height;
 	double		viewport_width;
-	t_vector	x_direct_vector;
-	t_vector	y_direct_vector;
+	t_vector	horizontal;
+	t_vector	vertical;
 	double		focal_length;
 	t_point		left_bottom;
 }	t_camera;
@@ -59,7 +59,7 @@ typedef struct s_plane
 typedef struct s_cylinder
 {
 	t_point		center;		//원기둥 중심점의 좌표
-	t_vector	normal;	//3차원 정규화 원기둥 축 벡터 -1~1
+	t_vector	direct;	//3차원 정규화 원기둥 축 벡터 -1~1
 	double		diameter;	//원기둥 지름
 	double		radius;	//원기둥 지름
 	double		height;		//원기둥 높이
