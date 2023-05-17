@@ -15,12 +15,21 @@ void	set_camera(t_camera *camera, t_screen screen)
 	camera->horizontal = vector_cross_product(camera->vertical, camera->direct);
 	camera->horizontal = get_unit_vector(camera->horizontal);
 	camera->horizontal = vector_multiple(camera->horizontal, -1);
-	//printf("%f %f %f\n", camera->horizontal.x, camera->horizontal.y, camera->horizontal.z);
 	camera->focal_length = 1.0; // 수정
-	tmp = init_vector(0, 0, -1 * camera->focal_length);
-	camera->left_bottom = vector_plus(origin, tmp);
-	tmp = vector_multiple(camera->horizontal, camera->viewport_width / (-2));
-	camera->left_bottom = vector_plus(camera->left_bottom, tmp);
-	tmp = vector_multiple(camera->vertical, camera->viewport_height / (-2));
-	camera->left_bottom = vector_plus(camera->left_bottom, tmp);
+	tmp = init_vector(0, 0, camera->focal_length);
+	camera->left_bottom = vector_minus(origin, tmp);
+	tmp = vector_multiple(camera->horizontal, camera->viewport_width / 2);
+	camera->left_bottom = vector_minus(camera->left_bottom, tmp);
+	tmp = vector_multiple(camera->vertical, camera->viewport_height / 2);
+	camera->left_bottom = vector_minus(camera->left_bottom, tmp);
+}
+
+t_color	init_color(int r, int g, int b)
+{
+	t_color	color;
+
+	color.r = r;
+	color.g = g;
+	color.b = b;
+	return (color);
 }

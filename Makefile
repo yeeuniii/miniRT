@@ -1,5 +1,5 @@
 NAME = miniRT
-CFLAGS = -Wall -Wextra -Werror
+#CFLAGS = -Wall -Wextra -Werror
 CLIB = -lmlx -framework OpenGL -framework AppKit -Imlx
 RM = rm -f
 LIBFT_DIR = ./libft/
@@ -31,6 +31,7 @@ VECTOR_SRCS = \
 
 OBJECT_SRCS = \
 	init.c \
+	draw.c \
 
 OBJS := \
 	$(addprefix $(SRCS_DIR), $(SRCS:.c=.o)) \

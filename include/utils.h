@@ -2,7 +2,9 @@
 # define UTILS_H
 
 # include "main.h"
+
 //init_functions
+
 t_vector	atof_vector(char *str);
 void	init_argv(int ac, char **av, t_lights *l, t_objects *s);
 void	init_ambient(char **str, t_lights *l);
@@ -13,8 +15,10 @@ void	init_plane(char **str, t_objects *s);
 void	init_cylinder(char **str, t_objects *s);
 void	checking_argv(char *tmp, t_lights *l, t_objects *s);
 void	set_camera(t_camera *camera, t_screen screen);
+t_color	init_color(int r, int g, int b);
 
 //utils
+
 int			ft_strcmp(char *s1, char *s2);
 int			ft_isspace(char c);
 int			check_digit(char *str);
@@ -33,5 +37,9 @@ void	error_exit(char *str);
 //mlx_functions
 
 void	init_mlx(t_mlx *m);
+
+// object
+
+void	draw_objects(t_lights lights, t_objects objects, t_mlx mlx_info);
 
 #endif

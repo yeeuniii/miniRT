@@ -10,9 +10,9 @@ int	main(int ac, char **av)
 	init_argv(ac, av, &lights, &shapes);
 	init_mlx(&mlx_info);
 	set_camera(lights.camera, mlx_info.screen);
-//	printf("%f %f %f\n", lights.camera->left_bottom.x, lights.camera->left_bottom.y, lights.camera->left_bottom.z);
+	draw_objects(lights, shapes, mlx_info);
 //	test_lights(&lights);
 //	test_shapes(&shapes);
-//mlx_loop(mlx_info.mlx);
+	mlx_loop(mlx_info.mlx);
 	return (0);
 }
