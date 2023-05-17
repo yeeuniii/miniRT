@@ -15,6 +15,7 @@
 
 # define WIDTH 800
 # define HEIGHT 600
+# define VIEWPORT_HEIGHT 2.0
 
 typedef struct s_objects t_objects;
 

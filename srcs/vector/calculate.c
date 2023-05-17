@@ -1,4 +1,4 @@
-#include "../../incldues/vector.h"
+#include "../../include/vector.h"
 
 t_vector	vector_plus(t_vector v1, t_vector v2)
 {

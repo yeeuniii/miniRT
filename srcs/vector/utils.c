@@ -1,4 +1,4 @@
-#include "../includes/vector.h"
+#include "../../include/vector.h"
 #include <math.h>
 
 t_vector	init_vector(double x, double y, double z)
@@ -28,5 +28,5 @@ t_vector	get_unit_vector(t_vector vec)
 	double	size;
 
 	size = get_vector_size(vec);
-	return (ft_multiple(vec, 1 / size));
+	return (vector_multiple(vec, 1 / size));
 }

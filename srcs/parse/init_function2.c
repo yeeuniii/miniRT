@@ -85,8 +85,8 @@ void	init_cylinder(char **str, t_objects *s)
 
 	cyl = (t_cylinder *)malloc(sizeof(t_cylinder) * 1);
 	cyl->center = atof_vector(str[1]);
-	cyl->normal = atof_vector(str[2]);
-	if (!check_vector_range(cyl->normal))
+	cyl->direct = atof_vector(str[2]);
+	if (!check_vector_range(cyl->direct))
 		error_exit("Incorrectly entered vector_axis_range\n");
 	cyl->diameter = check_all_atof(str[3]);
 	cyl->height = check_all_atof(str[4]);

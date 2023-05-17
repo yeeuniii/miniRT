@@ -12,6 +12,7 @@ void	init_sphere(char **str, t_objects *l);
 void	init_plane(char **str, t_objects *s);
 void	init_cylinder(char **str, t_objects *s);
 void	checking_argv(char *tmp, t_lights *l, t_objects *s);
+void	set_camera(t_camera *camera, t_screen screen);
 
 //utils
 int			ft_strcmp(char *s1, char *s2);

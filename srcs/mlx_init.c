@@ -1,5 +1,5 @@
-#include "../../include/main.h"
-#include "../../include/utils.h"
+#include "../include/main.h"
+#include "../include/utils.h"
 
 static int	key_press(int keycode, t_mlx *m)
 {
@@ -27,7 +27,7 @@ void	init_mlx(t_mlx *m)
 
 	screen.width = WIDTH;
 	screen.height = HEIGHT;
-	screen.aspect_ratio = screen.width / screen.height;
+	screen.aspect_ratio = (double)screen.width / (double)screen.height;
 	m->screen = screen;
 	m->mlx = mlx_init();
 	m->win = mlx_new_window(m->mlx, screen.width, screen.height, "miniRT");

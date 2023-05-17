@@ -7,8 +7,12 @@ LIBFT = libft.a
 
 SRCS_DIR = srcs/
 PARSE_SRCS_DIR = $(SRCS_DIR)parse/
+VECTOR_SRCS_DIR = $(SRCS_DIR)vector/
+OBJECT_SRCS_DIR = $(SRCS_DIR)object/
 
-SRCS = main.c 
+SRCS = main.c \
+	mlx_init.c \
+
 PARSE_SRCS = \
 	get_next_line_utils.c \
 	get_next_line.c \
@@ -18,12 +22,21 @@ PARSE_SRCS = \
 	init_function2.c \
 	check_utils.c \
 	error_function.c \
-	mlx_init.c \
 	ft_split2.c \
+
+VECTOR_SRCS = \
+	calculate.c \
+	utils.c \
+	ray.c \
+
+OBJECT_SRCS = \
+	init.c \
 
 OBJS := \
 	$(addprefix $(SRCS_DIR), $(SRCS:.c=.o)) \
 	$(addprefix $(PARSE_SRCS_DIR), $(PARSE_SRCS:.c=.o)) \
+	$(addprefix $(VECTOR_SRCS_DIR), $(VECTOR_SRCS:.c=.o)) \
+	$(addprefix $(OBJECT_SRCS_DIR), $(OBJECT_SRCS:.c=.o)) \
 
 
 all : ${LIBFT} ${NAME}
