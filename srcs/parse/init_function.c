@@ -23,7 +23,9 @@ void	checking_argv(char *tmp, t_lights *l, t_shapes *s)
 {
 	char **str;
 
-	str = ft_split(tmp, ' ');
+	str = ft_split2(tmp);
+	if (!str[0])
+		return ;
 	if (ft_strcmp(str[0], "A") == 0)
 		init_ambient(str, l);
 	else if (ft_strcmp(str[0], "C") == 0)

@@ -1,6 +1,6 @@
 NAME = miniRT
 CFLAGS = -Wall -Wextra -Werror
-#CLIB = -Lmlx -lmlx -framework OpenGL -framework AppKit -Imlx
+CLIB = -lmlx -framework OpenGL -framework AppKit -Imlx
 RM = rm -f
 LIBFT_DIR = ./libft/
 LIBFT = libft.a
@@ -18,6 +18,8 @@ PARSE_SRCS = \
 	init_function2.c \
 	check_utils.c \
 	error_function.c \
+	mlx_init.c \
+	ft_split2.c \
 
 OBJS := \
 	$(addprefix $(SRCS_DIR), $(SRCS:.c=.o)) \

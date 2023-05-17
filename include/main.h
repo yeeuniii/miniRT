@@ -5,10 +5,13 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <mlx.h>
 # include "../libft/libft.h"
 # include "struct.h"
 # include "get_next_line.h"
 
+# define KEY_ESC 53
+# define ON_DESTROY 17
 typedef enum e_type
 {
 	A,
@@ -36,5 +39,11 @@ typedef struct s_shapes
 
 }	t_shapes;
 
+typedef struct	s_mlx
+{
+	void	*mlx;
+	void	*win;
+
+}				t_mlx;
 
 #endif

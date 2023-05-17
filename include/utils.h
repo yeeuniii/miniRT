@@ -18,13 +18,18 @@ int			ft_strcmp(char *s1, char *s2);
 int			ft_isspace(char c);
 int			check_space_and_digit(char *str);
 int			check_vector_range(t_vec v);
+char		**ft_split2(char const *s);
 double		ft_atof(char *str);
 double		check_all_atof(char *str);
 t_colors	check_color_argv(char *str);
 t_shapes	*ft_lstlast(t_shapes *lst);
 
-//error_fuctions
+//error_functions
 
 void	error_exit(char *str);
+
+//mlx_functions
+
+void	init_mlx(t_mlx *m);
 
 #endif

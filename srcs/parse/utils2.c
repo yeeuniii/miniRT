@@ -32,8 +32,6 @@ int	check_space_and_digit(char *str)
 	i = -1;
 	while (str[++i])
 	{
-		if (ft_isspace(str[i]))
-			continue ;
 		if (!ft_isdigit(str[i]) && (str[i] != '-' && str[i] != '+'))
 			return (0);
 	}

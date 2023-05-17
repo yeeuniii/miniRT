@@ -11,7 +11,7 @@ void	init_camera(char **str, t_lights *l)
 	c->o_vector_range = atof_vector(str[2]);//범위 체킹 함수 추가할 것
 	if (!check_vector_range(c->o_vector_range))
 		error_exit("Wrong o_vector_range number\n");
-	c->fov = ft_atoi(str[3]);
+	c->fov = check_all_atof(str[3]);
 	if (c->fov < 0 || c->fov > 180)
 		error_exit("Wrong fov number\n");
 	l->camera = c;
@@ -24,7 +24,7 @@ void	init_light(char **str, t_lights *l)
 	light = (t_light *)malloc(sizeof(t_light) * 1);
 	light->identifier = L;
 	light->l_point = atof_vector(str[1]);
-	light->bright_range = ft_atof(str[2]);
+	light->bright_range = check_all_atof(str[2]);
 	if (light->bright_range < 0.0 || light->bright_range > 1.0)
 		error_exit("Incorrectly entered bright range\n");
 	light->colors = check_color_argv(str[3]);
@@ -40,7 +40,7 @@ void	init_sphere(char **str, t_shapes *s)
 	sphere = (t_sphere *)malloc(sizeof(t_sphere) * 1);
 	sphere->identifier = sp;
 	sphere->s_center = atof_vector(str[1]);
-	sphere->s_diameter = ft_atof(str[2]);
+	sphere->s_diameter = check_all_atof(str[2]);
 	sphere->colors = check_color_argv(str[3]);
 	tmp = ft_lstlast(s);
 	if (!tmp)
@@ -93,8 +93,8 @@ void	init_cylinder(char **str, t_shapes *s)
 	cyl->vector_axis_range = atof_vector(str[2]);
 	if (!check_vector_range(cyl->vector_axis_range))
 		error_exit("Incorrectly entered vector_axis_range\n");
-	cyl->diameter = ft_atof(str[3]);
-	cyl->height = ft_atof(str[4]);
+	cyl->diameter = check_all_atof(str[3]);
+	cyl->height = check_all_atof(str[4]);
 	cyl->colors = check_color_argv(str[5]);
 	tmp = ft_lstlast(s);
 	if (!tmp)
