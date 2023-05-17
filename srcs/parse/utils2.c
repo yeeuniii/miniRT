@@ -23,7 +23,7 @@ static int	check_sig_double(char *str)
 		return (1);
 }
 
-int	check_space_and_digit(char *str)
+int	check_digit(char *str)
 {
 	int	i;
 
@@ -36,6 +36,29 @@ int	check_space_and_digit(char *str)
 			return (0);
 	}
 	return (1);
+}
+
+int	check_sig_double2(char *str)
+{
+	int	i;
+	int	flag;
+	int	flag2;
+
+	flag = 0;
+	flag2 = 0;
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i] == '-' || str[i] == '+')
+			flag += 1;
+		if (str[i] == '.')
+			flag2 += 1;
+	}
+	printf("check %d\n", flag);
+	if (flag > 1)
+		return (0);
+	else
+		return (1);
 }
 
 int	check_vector_range(t_vec v)

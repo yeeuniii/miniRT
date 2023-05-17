@@ -3,19 +3,16 @@
 double	check_all_atof(char *str)
 {
 	int i;
-	int	flag;
 
 	i = 0;
 	if (str[i] == '0' && str[i + 1] != '.')
 		return (0);
 	while (str[i])
 	{
-		if (str[i] == '-' || str[i] == '+')
-		{
-			if (flag == 1)
-				error_exit("Too many sign\n");
-			flag = 1;
-		}
+		if (!check_sig_double2(str))
+			error_exit("Too many sign\n");
+		if (!ft_isdigit(str[i]) && (str[i] != '-' && str[i] != '+' && str[i] != '.'))
+			error_exit("Incorrectly entered number\n");
 		if (str[i] == '.')
 			return (ft_atof(str));
 		i++;
@@ -33,7 +30,7 @@ t_colors	check_color_argv(char *str)
 	i = -1;
 	while (dest[++i])
 	{
-		if (!check_space_and_digit(dest[i]))
+		if (!check_digit(dest[i]))
 			error_exit("Wrong RGB number\n");
 	}
 	tml.r = ft_atoi(dest[0]);

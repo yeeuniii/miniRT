@@ -76,12 +76,12 @@ int	main(int ac, char **av)
 {
 	t_lights	lights;
 	t_shapes	shapes;
-	t_mlx		mlx_info;
+	//t_mlx		mlx_info;
 
 	init_argv(ac, av, &lights, &shapes);
-	init_mlx(&mlx_info);
+	//init_mlx(&mlx_info);
 	test_lights(&lights);
 	test_shapes(&shapes);
-	mlx_loop(mlx_info.mlx);
+	//mlx_loop(mlx_info.mlx);
 	return (0);
 }
