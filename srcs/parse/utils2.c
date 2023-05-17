@@ -1,7 +1,5 @@
 #include "../../include/main.h"
 #include "../../include/utils.h"
-#include "../../include/main.h"
-#include "../../include/utils.h"
 
 static int	check_sig_double(char *str)
 {
@@ -63,9 +61,7 @@ int	check_sig_double2(char *str)
 
 int	check_vector_range(t_vector v)
 {
-	if ((v.x < -1.0 || v.x > 1.0) || \
-		(v.y < -1.0 || v.y > 1.0) || \
-		(v.z < -1.0 || v.z > 1.0))
+	if (get_vector_size(v) != 1)
 		return (0);
 	return (1);
 }
