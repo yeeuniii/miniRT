@@ -13,6 +13,9 @@
 # define KEY_ESC 53
 # define ON_DESTROY 17
 
+# define WIDTH 800
+# define HEIGHT 600
+
 typedef struct s_objects t_objects;
 
 typedef enum e_type
@@ -39,11 +42,18 @@ typedef struct s_objects
 
 }	t_objects;
 
+typedef struct s_screen
+{
+	int		width;
+	int		height;
+	double	aspect_ratio;
+}	t_screen;
+
 typedef struct	s_mlx
 {
-	void	*mlx;
-	void	*win;
-
+	void		*mlx;
+	void		*win;
+	t_screen	screen;
 }	t_mlx;
 
 #endif
