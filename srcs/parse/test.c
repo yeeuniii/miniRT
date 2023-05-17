@@ -26,9 +26,9 @@ void	test_lights(t_lights *l)
 	printf("\n\n");
 }
 
-void	test_shapes(t_objects *s)
+void	test_shapes(t_object *s)
 {
-	t_objects *tmp;
+	t_object *tmp;
 	t_sphere *sphere;
 	t_plane	 *plane;
 	t_cylinder *cyl;

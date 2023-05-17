@@ -6,14 +6,14 @@
 //init_functions
 
 t_vector	atof_vector(char *str);
-void	init_argv(int ac, char **av, t_lights *l, t_objects *s);
+void	init_argv(int ac, char **av, t_lights *l, t_object *s);
 void	init_ambient(char **str, t_lights *l);
 void	init_camera(char **str, t_lights *l);
 void	init_light(char **str, t_lights *l);
-void	init_sphere(char **str, t_objects *l);
-void	init_plane(char **str, t_objects *s);
-void	init_cylinder(char **str, t_objects *s);
-void	checking_argv(char *tmp, t_lights *l, t_objects *s);
+void	init_sphere(char **str, t_object *l);
+void	init_plane(char **str, t_object *s);
+void	init_cylinder(char **str, t_object *s);
+void	checking_argv(char *tmp, t_lights *l, t_object *s);
 void	set_camera(t_camera *camera, t_screen screen);
 t_color	init_color(int r, int g, int b);
 
@@ -28,7 +28,7 @@ char		**ft_split2(char const *s);
 double		ft_atof(char *str);
 double		check_all_atof(char *str);
 t_color		check_color_argv(char *str);
-t_objects	*ft_lstlast(t_objects *lst);
+t_object	*ft_lstlast(t_object *lst);
 
 //error_functions
 
@@ -40,6 +40,7 @@ void	init_mlx(t_mlx *m);
 
 // object
 
-void	draw_objects(t_lights lights, t_objects objects, t_mlx mlx_info);
+void		draw_objects(t_lights lights, t_object object, t_mlx mlx_info);
+t_vector	get_direct(int i, int j, t_screen screen, t_lights lights);
 
 #endif

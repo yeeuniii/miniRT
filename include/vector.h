@@ -30,6 +30,5 @@ t_vector	vector_cross_product(t_vector v1, t_vector v2);
 
 t_ray		init_ray(t_point origin, t_vector direct);
 t_point		point_ray(t_ray ray, double t);
-t_vector	get_direct(int i, int j, t_screen screen, t_lights lights);
 
 #endif

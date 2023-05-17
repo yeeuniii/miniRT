@@ -17,7 +17,7 @@
 # define HEIGHT 600
 # define VIEWPORT_HEIGHT 2.0
 
-typedef struct s_objects t_objects;
+typedef struct s_object t_object;
 
 typedef enum e_type
 {
@@ -35,13 +35,13 @@ typedef struct s_lights
 
 }	t_lights;
 
-typedef struct s_objects
+typedef struct s_object
 {
 	int			type;
 	void		*object;
-	t_objects	*next;
+	t_object	*next;
 
-}	t_objects;
+}	t_object;
 
 typedef struct s_screen
 {
@@ -67,5 +67,9 @@ typedef struct	s_mlx
 	t_screen	screen;
 }	t_mlx;
 
+typedef struct s_hitted
+{
+	t_color	color;
+}	t_hitted;
 
 #endif

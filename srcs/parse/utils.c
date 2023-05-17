@@ -55,9 +55,9 @@ double ft_atof(char *str)
 	return (sig * (num + num2));
 }
 
-t_objects	*ft_lstlast(t_objects *lst)
+t_object	*ft_lstlast(t_object *lst)
 {
-	t_objects	*last;
+	t_object	*last;
 
 	last = lst;
 	if (last->type == -1)

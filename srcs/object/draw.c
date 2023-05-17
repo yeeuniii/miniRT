@@ -1,5 +1,4 @@
 #include "../../include/main.h"
-#include "../../include/struct.h"
 #include "../../include/utils.h"
 
 void	put_pixel_mlx(t_data *data, int x, int y, int color)
@@ -15,7 +14,7 @@ int	get_rgb(t_color color)
 	return (color.r << 16 | color.g << 8 | color.b);
 }
 
-void	draw_objects(t_lights lights, t_objects objects, t_mlx mlx_info)
+void	draw_objects(t_lights lights, t_object objects, t_mlx mlx_info)
 {
 	int			i;
 	int			j;
@@ -28,7 +27,7 @@ void	draw_objects(t_lights lights, t_objects objects, t_mlx mlx_info)
 	j = screen.height;
 	while (j >= 0)
 	{
-		ray = init_ray(lights.camera.origin, get_direct(i, j, screen, lights));
+		ray = init_ray(lights.camera->origin, get_direct(i, j, screen, lights));
 		color = init_color(255, 255, 255);
 		put_pixel_mlx(&mlx_info.data, i, screen.height - j, get_rgb(color));
 		i++;

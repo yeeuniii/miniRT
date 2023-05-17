@@ -1,4 +1,4 @@
-#include "../../include/vector.h"
+#include "../../include/main.h"
 
 t_ray	init_ray(t_point origin, t_vector direct)
 {
@@ -26,7 +26,7 @@ t_vector	get_direct(int i, int j, t_screen screen, t_lights lights)
 	v = (double)j / (screen.height - 1);
 	camera = lights.camera;
 	tmp = vector_multiple(camera->horizontal, u);
-	direct = vector_plus(ft_camera->left_bottom, tmp);
+	direct = vector_plus(camera->left_bottom, tmp);
 	tmp = vector_multiple(camera->vertical, v);
 	direct = vector_plus(direct, tmp);
 	direct = vector_minus(direct, camera->origin);

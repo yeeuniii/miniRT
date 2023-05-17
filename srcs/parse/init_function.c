@@ -1,7 +1,7 @@
 #include "../../include/main.h"
 #include "../../include/utils.h"
 
-void	init_argv(int ac, char **av, t_lights *l, t_objects *s)
+void	init_argv(int ac, char **av, t_lights *l, t_object *s)
 {
 	int		fd;
 	char	*tmp;
@@ -22,7 +22,7 @@ void	init_argv(int ac, char **av, t_lights *l, t_objects *s)
 	}
 }
 
-void	checking_argv(char *tmp, t_lights *l, t_objects *s)
+void	checking_argv(char *tmp, t_lights *l, t_object *s)
 {
 	char **str;
 
