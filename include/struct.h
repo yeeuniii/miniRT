@@ -23,6 +23,12 @@ typedef struct s_camera
 	t_point		origin;		//뷰포인트 시야점 좌표
 	t_vector	direct;		//3D 정규화 방향 벡터 -1~1
 	double		fov; 		// 수평시야각 0~180
+	double		viewport_height;
+	double		viewport_width;
+	t_vector	x_direct_vector;
+	t_vector	y_direct_vector;
+	double		focal_length;
+	t_point		left_bottom;
 }	t_camera;
 
 typedef struct s_light

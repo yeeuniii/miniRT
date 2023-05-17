@@ -23,8 +23,14 @@ static int	destroy_game(t_mlx *m)
 
 void	init_mlx(t_mlx *m)
 {
+	t_screen	screen;
+
+	screen.width = WIDTH;
+	screen.height = HEIGHT;
+	screen.aspect_ratio = screen.width / screen.height;
+	m->screen = screen;
 	m->mlx = mlx_init();
-	m->win = mlx_new_window(m->mlx, 800, 600, "miniRT");
+	m->win = mlx_new_window(m->mlx, screen.width, screen.height, "miniRT");
 	mlx_key_hook(m->win, key_press, m);
 	mlx_hook(m->win, ON_DESTROY, 0, destroy_game, m);
 }
