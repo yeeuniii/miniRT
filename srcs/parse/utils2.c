@@ -61,7 +61,7 @@ int	check_sig_double2(char *str)
 		return (1);
 }
 
-int	check_vector_range(t_vec v)
+int	check_vector_range(t_vector v)
 {
 	if ((v.x < -1.0 || v.x > 1.0) || \
 		(v.y < -1.0 || v.y > 1.0) || \

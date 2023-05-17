@@ -4,34 +4,31 @@
 void	test_lights(t_lights *l)
 {
 	printf("check ambient\n");
-	printf("identifier %d\n", l->ambient->identifier);
-	printf("l_lange %.1f\n", l->ambient->l_range);
+	printf("l_lange %.1f\n", l->ambient->lighting_ratio);
 	printf("color %d,%d,%d\n",
-		   l->ambient->colors.r, l->ambient->colors.g, l->ambient->colors.b);
+		   l->ambient->color.r, l->ambient->color.g, l->ambient->color.b);
 	
 	printf("\n\n");
 
 	printf("check camera\n");
-	printf("identifier %d\n", l->camera->identifier);
-	printf("v_point %.f, %.f, %.f \n", l->camera->v_point.x, l->camera->v_point.y, l->camera->v_point.z);
+	printf("v_point %.f, %.f, %.f \n", l->camera->origin.x, l->camera->origin.y, l->camera->origin.z);
 	printf("o_vector_range %.f,%.f,%.f\n", \
-		l->camera->o_vector_range.x, l->camera->o_vector_range.y, l->camera->o_vector_range.z);
+		l->camera->direct.x, l->camera->direct.y, l->camera->direct.z);
 	printf("fov %d\n", l->camera->fov);
 
 	printf("\n\n");
 
 	printf("check light\n");
-	printf("identifier %d\n", l->light->identifier);
-	printf("l_point %.f,%.f,%.f \n", l->light->l_point.x, l->light->l_point.y, l->light->l_point.z);
-	printf("bright_range %.1f\n", l->light->bright_range);
-	printf("color %d,%d,%d\n", l->light->colors.r, l->light->colors.g, l->light->colors.b);
+	printf("l_point %.f,%.f,%.f \n", l->light->origin.x, l->light->origin.y, l->light->origin.z);
+	printf("bright_range %.1f\n", l->light->bright_ratio);
+	printf("color %d,%d,%d\n", l->light->color.r, l->light->color.g, l->light->color.b);
 
 	printf("\n\n");
 }
 
-void	test_shapes(t_shapes *s)
+void	test_shapes(t_objects *s)
 {
-	t_shapes *tmp;
+	t_objects *tmp;
 	t_sphere *sphere;
 	t_plane	 *plane;
 	t_cylinder *cyl;
@@ -39,34 +36,31 @@ void	test_shapes(t_shapes *s)
 	tmp = s;
 	while (tmp)
 	{
-		if (tmp->type == sp)
+		if (tmp->type == SPHERE)
 		{
-			sphere = (t_sphere *)tmp->shape;
+			sphere = (t_sphere *)tmp->object;
 			printf("sphere\n");
-			printf("identifier %d\n", sphere->identifier);
-			printf("s_center %.1f,%.1f,%.1f \n", sphere->s_center.x, sphere->s_center.y, sphere->s_center.z);
-			printf("s_diameter %.1f \n", sphere->s_diameter);
-			printf("colors %d,%d,%d\n\n", sphere->colors.r, sphere->colors.g, sphere->colors.b);
+			printf("s_center %.1f,%.1f,%.1f \n", sphere->center.x, sphere->center.y, sphere->center.z);
+			printf("s_diameter %.1f \n", sphere->diameter);
+			printf("colors %d,%d,%d\n\n", sphere->color.r, sphere->color.g, sphere->color.b);
 		}
-		else if (tmp->type == pl)
+		else if (tmp->type == PLANE)
 		{
-			plane = (t_plane *)tmp->shape;
+			plane = (t_plane *)tmp->object;
 			printf("plane\n");
-			printf("identifier %d\n", plane->identifier);
-			printf("p_point %.1f,%.1f,%.1f \n", plane->p_point.x, plane->p_point.y, plane->p_point.z);
-			printf("n_vector_range %.1f,%.1f,%.1f \n", plane->n_vector_range.x, plane->n_vector_range.y, plane->n_vector_range.z);
-			printf("colors %d,%d,%d\n\n", plane->colors.r, plane->colors.g, plane->colors.b);
+			printf("p_point %.1f,%.1f,%.1f \n", plane->point.x, plane->point.y, plane->point.z);
+			printf("n_vector_range %.1f,%.1f,%.1f \n", plane->normal.x, plane->normal.y, plane->normal.z);
+			printf("colors %d,%d,%d\n\n", plane->color.r, plane->color.g, plane->color.b);
 		}
-		else if (tmp->type == cy)
+		else if (tmp->type == CYLINDER)
 		{
-			cyl = (t_cylinder *)tmp->shape;
+			cyl = (t_cylinder *)tmp->object;
 			printf("cylinder\n");
-			printf("identifier %d\n", cyl->identifier);
 			printf("center %.1f,%.1f,%.1f \n", cyl->center.x, cyl->center.y, cyl->center.z);
-			printf("vector_axis_range %.1f,%.1f,%.1f \n", cyl->vector_axis_range.x, cyl->vector_axis_range.y, cyl->vector_axis_range.z);
+			printf("vector_axis_range %.1f,%.1f,%.1f \n", cyl->normal.x, cyl->normal.y, cyl->normal.z);
 			printf("diameter %.1f\n", cyl->diameter);
 			printf("height %.1f \n", cyl->height);
-			printf("colors %d,%d,%d\n\n", cyl->colors.r, cyl->colors.g, cyl->colors.b);
+			printf("colors %d,%d,%d\n\n", cyl->color.r, cyl->color.g, cyl->color.b);
 		}
 		tmp = tmp->next;
 	}
@@ -75,7 +69,7 @@ void	test_shapes(t_shapes *s)
 int	main(int ac, char **av)
 {
 	t_lights	lights;
-	t_shapes	shapes;
+	t_objects	shapes;
 	//t_mlx		mlx_info;
 
 	init_argv(ac, av, &lights, &shapes);

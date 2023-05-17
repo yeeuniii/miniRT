@@ -55,12 +55,12 @@ double ft_atof(char *str)
 	return (sig * (num + num2));
 }
 
-t_shapes	*ft_lstlast(t_shapes *lst)
+t_objects	*ft_lstlast(t_objects *lst)
 {
-	t_shapes	*last;
+	t_objects	*last;
 
 	last = lst;
-	if (!last->shape && !last->next)
+	if (!last->object && !last->next)
 		return (NULL);
 	while (last -> next)
 		last = last -> next;

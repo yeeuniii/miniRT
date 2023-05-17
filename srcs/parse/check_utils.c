@@ -20,9 +20,9 @@ double	check_all_atof(char *str)
 	return (ft_atoi(str));
 }
 
-t_colors	check_color_argv(char *str)
+t_color	check_color_argv(char *str)
 {
-	t_colors	tml;
+	t_color	tml;
 	int			i;
 	char		**dest;
 

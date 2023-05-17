@@ -4,11 +4,11 @@
 typedef struct s_vector	t_vector;
 typedef struct s_vector	t_point;
 
-typedef struct s_vector
+struct s_vector
 {
-	double x;
-	double y;
-	double z;
+	double	x;
+	double	y;
+	double	z;
 
 };
 
