@@ -60,9 +60,9 @@ t_objects	*ft_lstlast(t_objects *lst)
 	t_objects	*last;
 
 	last = lst;
-	if (!last->object && !last->next)
+	if (last->type == -1)
 		return (NULL);
-	while (last -> next)
-		last = last -> next;
+	while (last->next)
+		last = last->next;
 	return (last);
 }
