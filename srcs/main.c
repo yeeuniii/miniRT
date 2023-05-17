@@ -14,7 +14,7 @@ void	test_lights(t_lights *l)
 	printf("v_point %.f, %.f, %.f \n", l->camera->origin.x, l->camera->origin.y, l->camera->origin.z);
 	printf("o_vector_range %.f,%.f,%.f\n", \
 		l->camera->direct.x, l->camera->direct.y, l->camera->direct.z);
-	printf("fov %d\n", l->camera->fov);
+	printf("fov %.1f\n", l->camera->fov);
 
 	printf("\n\n");
 

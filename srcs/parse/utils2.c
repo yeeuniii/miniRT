@@ -54,8 +54,7 @@ int	check_sig_double2(char *str)
 		if (str[i] == '.')
 			flag2 += 1;
 	}
-	printf("check %d\n", flag);
-	if (flag > 1)
+	if (flag > 1 || flag2 > 1)
 		return (0);
 	else
 		return (1);
