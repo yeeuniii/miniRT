@@ -12,14 +12,14 @@
 
 # define KEY_ESC 53
 # define ON_DESTROY 17
+
+typedef struct s_objects t_objects;
+
 typedef enum e_type
 {
-	A,
-	C,
-	L,
-	sp,
-	pl,
-	cy
+	SPHERE,
+	PLANE,
+	CYLINDER
 
 }	t_type;
 
@@ -31,19 +31,19 @@ typedef struct s_lights
 
 }	t_lights;
 
-typedef struct s_shapes
+typedef struct s_objects
 {
-	int				type;
-	void			*shape;
-	struct s_shapes	*next;
+	int			type;
+	void		*object;
+	t_objects	*next;
 
-}	t_shapes;
+}	t_objects;
 
 typedef struct	s_mlx
 {
 	void	*mlx;
 	void	*win;
 
-}				t_mlx;
+}	t_mlx;
 
 #endif
