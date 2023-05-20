@@ -69,7 +69,12 @@ typedef struct	s_mlx
 
 typedef struct s_hitted
 {
-	t_color	color;
+	t_point		p;
+	t_vector	normal;
+	double		t_min;
+	double		t_max;
+	double		t;
+	t_color		color;
 }	t_hitted;
 
 #endif
