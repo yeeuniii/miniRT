@@ -14,7 +14,7 @@ int	get_rgb(t_color color)
 	return (color.r << 16 | color.g << 8 | color.b);
 }
 
-void	draw_objects(t_lights lights, t_object objects, t_mlx mlx_info)
+void	draw_objects(t_lights lights, t_object *objects, t_mlx mlx_info)
 {
 	int			i;
 	int			j;
@@ -25,10 +25,10 @@ void	draw_objects(t_lights lights, t_object objects, t_mlx mlx_info)
 	screen = mlx_info.screen;
 	i = 0;
 	j = screen.height;
-	while (j >= 0)
+	while (j > 0)
 	{
 		ray = init_ray(lights.camera->origin, get_direct(i, j, screen, lights));
-		color = init_color(255, 255, 255);
+		color = get_color(lights, objects, ray);
 		put_pixel_mlx(&mlx_info.data, i, screen.height - j, get_rgb(color));
 		i++;
 		if (i == screen.width)

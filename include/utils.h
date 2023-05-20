@@ -40,7 +40,8 @@ void	init_mlx(t_mlx *m);
 
 // object
 
-void		draw_objects(t_lights lights, t_object object, t_mlx mlx_info);
+void		draw_objects(t_lights lights, t_object *objects, t_mlx mlx_info);
 t_vector	get_direct(int i, int j, t_screen screen, t_lights lights);
+t_color		get_color(t_lights lights, t_object *objects, t_ray ray);
 
 #endif
