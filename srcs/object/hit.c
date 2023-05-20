@@ -59,13 +59,13 @@ t_color	hit_object(t_object *object, t_ray ray, t_hitted *record)
 	}
 	if (!is_hitted)
 		return (init_color(0, 0, 0));
-	return (record->color);	
+	return (record->color);
 }
 
 t_color	get_color(t_lights lights, t_object *objects, t_ray ray)
 {
 	t_hitted	record;
-	t_color 	color;
+	t_color		color;
 
 	(void)lights;
 	record.t_min = 0;

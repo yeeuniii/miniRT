@@ -32,4 +32,3 @@ t_vector	get_direct(int i, int j, t_screen screen, t_lights lights)
 //	direct = vector_minus(direct, camera->origin);
 	return (get_unit_vector(direct));
 }
-

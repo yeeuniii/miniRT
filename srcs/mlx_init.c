@@ -3,7 +3,6 @@
 
 static int	key_press(int keycode, t_mlx *m)
 {
-
 	if (keycode == KEY_ESC)
 	{
 		printf("Exit\n");
