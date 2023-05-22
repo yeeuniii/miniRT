@@ -1,11 +1,6 @@
 #include "../../include/main.h"
 #include "../../include/utils.h"
 
-void	f(void)
-{
-	system("leaks miniRT");
-}
-
 void	error_exit(char *str, char **s1, char **s2, t_object *o)
 {
 	if (s1)
@@ -16,7 +11,6 @@ void	error_exit(char *str, char **s1, char **s2, t_object *o)
 		free_objects(o);
 	printf("Error\n");
 	printf("%s", str);
-	atexit(f);
 	exit(1);
 }
 

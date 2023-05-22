@@ -5,8 +5,8 @@ double	check_all_atof(char *str, char **s1, char **s2, t_object *o)
 	int	i;
 
 	i = 0;
-	if (str[i] == '0' && str[i + 1] != '.')
-		return (0);
+	if (str[i] == '0' && str[i + 1] && str[i + 1] != '.')
+		error_exit("Incorrectly entered number\n", s1, s2, o);
 	while (str[i])
 	{
 		if (!check_sig_double2(str))
