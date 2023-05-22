@@ -27,7 +27,7 @@ void	draw_objects(t_lights lights, t_object *objects, t_mlx mlx_info)
 	j = screen.height;
 	while (j > 0)
 	{
-		ray = init_ray(lights.camera->origin, get_direct(i, j, screen, lights));
+		ray = init_ray(lights.camera.origin, get_direct(i, j, screen, lights));
 		color = get_color(lights, objects, ray);
 		put_pixel_mlx(&mlx_info.data, i, screen.height - j, get_rgb(color));
 		i++;

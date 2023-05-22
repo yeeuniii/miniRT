@@ -1,27 +1,27 @@
 #include "../../include/main.h"
-
+#include "../../include/utils.h"
 
 void	test_lights(t_lights *l)
 {
-	printf("check ambient\n");
-	printf("l_lange %.1f\n", l->ambient->lighting_ratio);
+	printf("\ncheck ambient\n");
+	printf("l_lange %.1f\n", l->ambient.lighting_ratio);
 	printf("color %d,%d,%d\n",
-		   l->ambient->color.r, l->ambient->color.g, l->ambient->color.b);
+		   l->ambient.color.r, l->ambient.color.g, l->ambient.color.b);
 	
 	printf("\n\n");
 
 	printf("check camera\n");
-	printf("v_point %.f, %.f, %.f \n", l->camera->origin.x, l->camera->origin.y, l->camera->origin.z);
+	printf("v_point %.f, %.f, %.f \n", l->camera.origin.x, l->camera.origin.y, l->camera.origin.z);
 	printf("o_vector_range %.f,%.f,%.f\n", \
-		l->camera->direct.x, l->camera->direct.y, l->camera->direct.z);
-	printf("fov %.1f\n", l->camera->fov);
+		l->camera.direct.x, l->camera.direct.y, l->camera.direct.z);
+	printf("fov %.1f\n", l->camera.fov);
 
 	printf("\n\n");
 
 	printf("check light\n");
-	printf("l_point %.f,%.f,%.f \n", l->light->origin.x, l->light->origin.y, l->light->origin.z);
-	printf("bright_range %.1f\n", l->light->bright_ratio);
-	printf("color %d,%d,%d\n", l->light->color.r, l->light->color.g, l->light->color.b);
+	printf("l_point %.f,%.f,%.f \n", l->light.origin.x, l->light.origin.y, l->light.origin.z);
+	printf("bright_range %.1f\n", l->light.bright_ratio);
+	printf("color %d,%d,%d\n", l->light.color.r, l->light.color.g, l->light.color.b);
 
 	printf("\n\n");
 }

@@ -29,9 +29,9 @@ typedef enum e_type
 
 typedef struct s_lights
 {
-	t_ambient	*ambient;
-	t_camera	*camera;
-	t_light		*light;
+	t_ambient	ambient;
+	t_camera	camera;
+	t_light		light;
 
 }	t_lights;
 

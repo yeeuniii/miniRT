@@ -64,3 +64,10 @@ int	check_vector_range(t_vector v)
 		return (0);
 	return (1);
 }
+
+void	init_object(int type, void *object, t_object *o)
+{
+	o->type = type;
+	o->object = object;
+	o->next = NULL;
+}

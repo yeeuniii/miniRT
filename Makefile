@@ -1,5 +1,5 @@
 NAME = miniRT
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
 CLIB = -lmlx -framework OpenGL -framework AppKit -Imlx
 RM = rm -f
 LIBFT_DIR = ./libft/
@@ -23,6 +23,7 @@ PARSE_SRCS = \
 	check_utils.c \
 	error_function.c \
 	ft_split2.c \
+	test.c
 
 VECTOR_SRCS = \
 	calculate.c \

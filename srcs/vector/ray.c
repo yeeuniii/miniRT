@@ -24,7 +24,7 @@ t_vector	get_direct(int i, int j, t_screen screen, t_lights lights)
 
 	u = (double)i / (screen.width - 1);
 	v = (double)j / (screen.height - 1);
-	camera = lights.camera;
+	camera = &lights.camera;
 	tmp = vector_multiple(camera->horizontal, u * camera->viewport_width);
 	direct = vector_plus(camera->left_bottom, tmp);
 	tmp = vector_multiple(camera->vertical, v * camera->viewport_height);
