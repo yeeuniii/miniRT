@@ -7,8 +7,8 @@
 
 t_vector	atof_vector(char *str, char **s1, t_object *o);
 t_object	*init_object_start(void);
-void		init_object(int type, void *object, t_object *o);
 void		init_argv(int ac, char **av, t_lights *l, t_object *o);
+void		init_object(int type, void *object, t_object *o);
 void		init_ambient(char **str, t_lights *l);
 void		init_camera(char **str, t_lights *l);
 void		init_light(char **str, t_lights *l);
@@ -21,6 +21,7 @@ t_color		init_color(int r, int g, int b);
 
 //utils
 
+int			check_split_count(char **str);
 int			ft_strcmp(char *s1, char *s2);
 int			ft_isspace(char c);
 int			check_digit(char *str);

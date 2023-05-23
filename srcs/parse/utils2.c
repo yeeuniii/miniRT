@@ -67,7 +67,21 @@ int	check_vector_range(t_vector v)
 
 void	init_object(int type, void *object, t_object *o)
 {
-	o->type = type;
-	o->object = object;
-	o->next = NULL;
+	t_object	*shape;
+	t_object	*tmp;
+
+	tmp = ft_lstlast(o);
+	if (!tmp)
+	{
+		o->type = type;
+		o->object = object;
+		o->next = NULL;
+		return ;
+	}
+	shape = (t_object *)malloc(sizeof(t_object) * 1);
+	shape->type = type;
+	shape->object = object;
+	shape->next = NULL;
+	tmp->next = shape;
+
 }

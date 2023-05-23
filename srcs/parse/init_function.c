@@ -74,7 +74,8 @@ t_vector	atof_vector(char *str, char **s1, t_object *o)
 
 void	init_ambient(char **str, t_lights *l)
 {
-
+	if (check_split_count(str) != 3)
+		error_exit("Wrong ambient argc\n", str, NULL, NULL);
 	l->ambient.lighting_ratio = check_all_atof(str[1], str, NULL, NULL);
 	if (l->ambient.lighting_ratio < 0 || l->ambient.lighting_ratio > 1.0)
 		error_exit("lighting_ratio only 0.0~1.0\n", str, NULL, NULL);

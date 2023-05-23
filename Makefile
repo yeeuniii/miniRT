@@ -18,6 +18,7 @@ PARSE_SRCS = \
 	get_next_line.c \
 	utils.c \
 	utils2.c \
+	utils3.c \
 	init_function.c \
 	init_function2.c \
 	check_utils.c \

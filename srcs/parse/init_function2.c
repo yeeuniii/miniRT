@@ -3,6 +3,8 @@
 
 void	init_camera(char **str, t_lights *l)
 {
+	if (check_split_count(str) != 4)
+		error_exit("Wrong camera argc\n", str, NULL, NULL);
 	l->camera.origin = atof_vector(str[1], str, NULL);
 	l->camera.direct = atof_vector(str[2], str, NULL);
 	if (!check_vector_range(l->camera.direct))
@@ -14,6 +16,8 @@ void	init_camera(char **str, t_lights *l)
 
 void	init_light(char **str, t_lights *l)
 {
+	if (check_split_count(str) != 4)
+		error_exit("Wrong light argc\n", str, NULL, NULL);
 	l->light.origin = atof_vector(str[1], str, NULL);
 	l->light.bright_ratio = check_all_atof(str[2], str, NULL, NULL);
 	if (l->light.bright_ratio < 0.0 || l->light.bright_ratio > 1.0)
@@ -25,54 +29,38 @@ void	init_light(char **str, t_lights *l)
 
 void	init_sphere(char **str, t_object *o)
 {
-	t_object	*shape;
-	t_object	*tmp;
 	t_sphere	*sphere;
 
+	if (check_split_count(str) != 4)
+		error_exit("Wrong sphere argc\n", str, NULL, o);
 	sphere = (t_sphere *)malloc(sizeof(t_sphere) * 1);
 	sphere->center = atof_vector(str[1], str, o);
 	sphere->diameter = check_all_atof(str[2], str, NULL, o);
 	sphere->color = check_color_argv(str[3], str, o);
-	tmp = ft_lstlast(o);
-	if (!tmp)
-	{
-		init_object(SPHERE, sphere, o);
-		return ;
-	}
-	shape = (t_object *)malloc(sizeof(t_object) * 1);
-	init_object(SPHERE, sphere, shape);
-	tmp->next = shape;
+	init_object(SPHERE, sphere, o);
 }
 
 void	init_plane(char **str, t_object *o)
 {
-	t_object	*shape;
-	t_object	*tmp;
 	t_plane		*plane;
 
+	if (check_split_count(str) != 4)
+		error_exit("Wrong plane argc\n", str, NULL, o);
 	plane = (t_plane *)malloc(sizeof(t_plane) * 1);
 	plane->point = atof_vector(str[1], str, o);
 	plane->normal = atof_vector(str[2], str, o);
 	if (!check_vector_range(plane->normal))
 		error_exit("Incorrectly entered n_vector range\n", str, NULL, o);
 	plane->color = check_color_argv(str[3], str, o);
-	tmp = ft_lstlast(o);
-	if (!tmp)
-	{
-		init_object(PLANE, plane, o);
-		return ;
-	}
-	shape = (t_object *)malloc(sizeof(t_object) * 1);
-	init_object(PLANE, plane, shape);
-	tmp->next = shape;
+	init_object(PLANE, plane, o);
 }
 
 void	init_cylinder(char **str, t_object *o)
 {
-	t_object	*shape;
-	t_object	*tmp;
 	t_cylinder	*cyl;
 
+	if (check_split_count(str) != 6)
+		error_exit("Wrong cylinder argc\n", str, NULL, o);
 	cyl = (t_cylinder *)malloc(sizeof(t_cylinder) * 1);
 	cyl->center = atof_vector(str[1], str, o);
 	cyl->direct = atof_vector(str[2], str, o);
@@ -81,13 +69,5 @@ void	init_cylinder(char **str, t_object *o)
 	cyl->diameter = check_all_atof(str[3], str, NULL, o);
 	cyl->height = check_all_atof(str[4], str, NULL, o);
 	cyl->color = check_color_argv(str[5], str, o);
-	tmp = ft_lstlast(o);
-	if (!tmp)
-	{
-		init_object(CYLINDER, cyl, o);
-		return ;
-	}
-	shape = (t_object *)malloc(sizeof(t_object) * 1);
-	init_object(CYLINDER, cyl, shape);
-	tmp->next = shape;
+	init_object(CYLINDER, cyl, o);
 }

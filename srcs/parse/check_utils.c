@@ -3,8 +3,10 @@
 double	check_all_atof(char *str, char **s1, char **s2, t_object *o)
 {
 	int	i;
+	int	flag;
 
 	i = 0;
+	flag = 0;
 	if (str[i] == '0' && str[i + 1] && str[i + 1] != '.')
 		error_exit("Incorrectly entered number\n", s1, s2, o);
 	while (str[i])
@@ -15,10 +17,13 @@ double	check_all_atof(char *str, char **s1, char **s2, t_object *o)
 			(str[i] != '-' && str[i] != '+' && str[i] != '.'))
 			error_exit("Incorrectly entered number\n", s1, s2, o);
 		if (str[i] == '.')
-			return (ft_atof(str));
+			flag = 1;
 		i++;
 	}
-	return (ft_atoi(str));
+	if (flag == 1)
+		return (ft_atof(str));
+	else
+		return (ft_atoi(str));
 }
 
 t_color	check_color_argv(char *str, char **s, t_object *o)
