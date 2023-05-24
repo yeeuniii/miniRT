@@ -42,12 +42,12 @@ t_color	check_color_argv(char *str, char **s, t_object *o)
 			error_exit("Wrong RGB number\n", s, NULL, o);
 		}
 	}
-	tml.r = ft_atoi(dest[0]);
-	tml.g = ft_atoi(dest[1]);
-	tml.b = ft_atoi(dest[2]);
+	tml.x = ft_atoi(dest[0]);
+	tml.y = ft_atoi(dest[1]);
+	tml.z = ft_atoi(dest[2]);
 	free_split(dest);
-	if ((tml.r < 0 || tml.r > 255) || (tml.g < 0 || tml.g > 255) || \
-		(tml.b < 0 || tml.b > 255))
+	if ((tml.x < 0 || tml.x > 255) || (tml.y < 0 || tml.y > 255) || \
+		(tml.z < 0 || tml.z > 255))
 		error_exit("R G B range is only 0~255\n", s, NULL, o);
 	return (tml);
 }

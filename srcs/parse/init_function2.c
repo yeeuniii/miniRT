@@ -66,7 +66,7 @@ void	init_cylinder(char **str, t_object *o)
 	if (!check_vector_range(cyl->direct))
 		error_exit("Incorrectly entered vector_axis_range\n", str, NULL, o);
 	cyl->diameter = check_all_atof(str[3], str, NULL, o);
-	cyl->radius = cyl->diameter / 2;
+	cyl->radius = cyl->diameter / 2; 
 	cyl->height = check_all_atof(str[4], str, NULL, o);
 	cyl->color = check_color_argv(str[5], str, o);
 	init_object(CYLINDER, cyl, o);

@@ -5,8 +5,8 @@ void	test_lights(t_lights *l)
 {
 	printf("\ncheck ambient\n");
 	printf("l_lange %.1f\n", l->ambient.lighting_ratio);
-	printf("color %d,%d,%d\n",
-		   l->ambient.color.r, l->ambient.color.g, l->ambient.color.b);
+	printf("color %.1f,%.1fd,%.1f\n",
+		   l->ambient.color.x, l->ambient.color.y, l->ambient.color.z);
 	
 	printf("\n\n");
 
@@ -21,7 +21,7 @@ void	test_lights(t_lights *l)
 	printf("check light\n");
 	printf("l_point %.f,%.f,%.f \n", l->light.origin.x, l->light.origin.y, l->light.origin.z);
 	printf("bright_range %.1f\n", l->light.bright_ratio);
-	printf("color %d,%d,%d\n", l->light.color.r, l->light.color.g, l->light.color.b);
+	printf("color %.1f,%.1f,%.1f\n", l->light.color.x, l->light.color.y, l->light.color.z);
 
 	printf("\n\n");
 }
@@ -43,7 +43,7 @@ void	test_shapes(t_object *s)
 			printf("s_center %.1f,%.1f,%.1f \n", sphere->center.x, sphere->center.y, sphere->center.z);
 			printf("s_diameter %.1f \n", sphere->diameter);
 			printf("radius %.1f\n", sphere->radius);
-			printf("colors %d,%d,%d\n\n", sphere->color.r, sphere->color.g, sphere->color.b);
+			printf("colors %.1f,%.1f,%.1f\n\n", sphere->color.x, sphere->color.y, sphere->color.z);
 		}
 		else if (tmp->type == PLANE)
 		{
@@ -51,7 +51,7 @@ void	test_shapes(t_object *s)
 			printf("plane\n");
 			printf("p_point %.1f,%.1f,%.1f \n", plane->point.x, plane->point.y, plane->point.z);
 			printf("n_vector_range %.1f,%.1f,%.1f \n", plane->normal.x, plane->normal.y, plane->normal.z);
-			printf("colors %d,%d,%d\n\n", plane->color.r, plane->color.g, plane->color.b);
+			printf("colors %.1f,%.1f,%.1f\n\n", plane->color.x, plane->color.y, plane->color.z);
 		}
 		else if (tmp->type == CYLINDER)
 		{
@@ -62,7 +62,7 @@ void	test_shapes(t_object *s)
 			printf("diameter %.1f\n", cyl->diameter);
 			printf("radius %.1f \n", cyl->radius);
 			printf("height %.1f \n", cyl->height);
-			printf("colors %d,%d,%d\n\n", cyl->color.r, cyl->color.g, cyl->color.b);
+			printf("colors %.1f,%.1f, %.1f\n\n", cyl->color.x, cyl->color.y, cyl->color.z);
 		}
 		tmp = tmp->next;
 	}
