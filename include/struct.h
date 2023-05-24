@@ -3,14 +3,6 @@
 
 # include "vector.h"
 
-typedef struct s_color
-{
-	int	r;
-	int	g;
-	int	b;
-
-}	t_color;
-
 typedef struct s_ambient
 {
 	double	lighting_ratio; 	//주변조명 비율 0.0~1.0

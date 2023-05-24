@@ -3,7 +3,7 @@
 
 typedef struct s_vector	t_vector;
 typedef struct s_vector	t_point;
-typedef struct s_vector	t_color_ratio;
+typedef struct s_vector	t_color;
 
 struct s_vector
 {
