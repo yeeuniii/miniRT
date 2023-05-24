@@ -49,6 +49,8 @@ void		draw_objects(t_lights lights, t_object *objects, t_mlx mlx_info);
 t_vector	get_direct(int i, int j, t_screen screen, t_lights lights);
 t_color		get_color(t_lights lights, t_object *objects, t_ray ray);
 
+int			hit_sphere(t_sphere sphere, t_ray ray, t_hitted *record);
+
 //test
 
 void		test_lights(t_lights *l);
