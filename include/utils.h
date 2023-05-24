@@ -17,7 +17,6 @@ void		init_plane(char **str, t_object *o);
 void		init_cylinder(char **str, t_object *o);
 void		checking_argv(char *tmp, t_lights *l, t_object *o);
 void		set_camera(t_camera *camera, t_screen screen);
-t_color		init_color(int r, int g, int b);
 
 //utils
 
@@ -53,8 +52,8 @@ int			hit_sphere(t_sphere sphere, t_ray ray, t_hitted *record);
 
 // phong_model
 
-t_color			apply_phong_model(t_lights lights, t_hitted record);
-t_color_ratio	apply_ambient(t_lights lights);
+t_color		apply_phong_model(t_lights lights, t_hitted record);
+t_color		apply_ambient(t_lights lights);
 
 //test
 

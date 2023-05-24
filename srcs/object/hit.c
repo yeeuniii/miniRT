@@ -11,7 +11,6 @@ int	hit_object(t_object *object, t_ray ray, t_hitted *record)
 	if (object->type == SPHERE)
 	{
 		sphere = (t_sphere *)object->object;
-		sphere->radius = sphere->diameter / 2;
 		is_hitted = hit_sphere(*sphere, ray, record);
 	}
 	return (is_hitted);
@@ -45,6 +44,6 @@ t_color	get_color(t_lights lights, t_object *objects, t_ray ray)
 	record.t_min = 0;
 	record.t_max = INFINITY;
 	if (!hit(objects, ray, &record))
-		return (init_color(0, 0, 0));
+		return (init_vector(0, 0, 0));
 	return (apply_phong_model(lights, record));
 }

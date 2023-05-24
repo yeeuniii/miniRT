@@ -25,13 +25,3 @@ void	set_camera(t_camera *camera, t_screen screen)
 	tmp = vector_multiple(camera->vertical, camera->viewport_height / 2);
 	camera->left_bottom = vector_minus(camera->left_bottom, tmp);
 }
-
-t_color	init_color(int r, int g, int b)
-{
-	t_color	color;
-
-	color.r = r;
-	color.g = g;
-	color.b = b;
-	return (color);
-}

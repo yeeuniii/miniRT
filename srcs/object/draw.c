@@ -11,7 +11,7 @@ void	put_pixel_mlx(t_data *data, int x, int y, int color)
 
 int	get_rgb(t_color color)
 {
-	return (color.r << 16 | color.g << 8 | color.b);
+	return ((int)color.x << 16 | (int)color.y << 8 | (int)color.z);
 }
 
 void	draw_objects(t_lights lights, t_object *objects, t_mlx mlx_info)
