@@ -51,6 +51,11 @@ t_color		get_color(t_lights lights, t_object *objects, t_ray ray);
 
 int			hit_sphere(t_sphere sphere, t_ray ray, t_hitted *record);
 
+// phong_model
+
+t_color			apply_phong_model(t_lights lights, t_hitted record);
+t_color_ratio	apply_ambient(t_lights lights);
+
 //test
 
 void		test_lights(t_lights *l);

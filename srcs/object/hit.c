@@ -46,5 +46,5 @@ t_color	get_color(t_lights lights, t_object *objects, t_ray ray)
 	record.t_max = INFINITY;
 	if (!hit(objects, ray, &record))
 		return (init_color(0, 0, 0));
-	return (record.color);
+	return (apply_phong_model(lights, record));
 }
