@@ -25,8 +25,6 @@ void	init_light(char **str, t_lights *l)
 	l->light.color = check_color_argv(str[3], str, NULL);
 }
 
-
-
 void	init_sphere(char **str, t_object *o)
 {
 	t_sphere	*sphere;
@@ -36,6 +34,7 @@ void	init_sphere(char **str, t_object *o)
 	sphere = (t_sphere *)malloc(sizeof(t_sphere) * 1);
 	sphere->center = atof_vector(str[1], str, o);
 	sphere->diameter = check_all_atof(str[2], str, NULL, o);
+	sphere->radius = sphere->diameter / 2;
 	sphere->color = check_color_argv(str[3], str, o);
 	init_object(SPHERE, sphere, o);
 }
@@ -67,6 +66,7 @@ void	init_cylinder(char **str, t_object *o)
 	if (!check_vector_range(cyl->direct))
 		error_exit("Incorrectly entered vector_axis_range\n", str, NULL, o);
 	cyl->diameter = check_all_atof(str[3], str, NULL, o);
+	cyl->radius = cyl->diameter / 2;
 	cyl->height = check_all_atof(str[4], str, NULL, o);
 	cyl->color = check_color_argv(str[5], str, o);
 	init_object(CYLINDER, cyl, o);

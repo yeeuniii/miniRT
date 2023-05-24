@@ -42,6 +42,7 @@ void	test_shapes(t_object *s)
 			printf("sphere\n");
 			printf("s_center %.1f,%.1f,%.1f \n", sphere->center.x, sphere->center.y, sphere->center.z);
 			printf("s_diameter %.1f \n", sphere->diameter);
+			printf("radius %.1f\n", sphere->radius);
 			printf("colors %d,%d,%d\n\n", sphere->color.r, sphere->color.g, sphere->color.b);
 		}
 		else if (tmp->type == PLANE)
@@ -59,6 +60,7 @@ void	test_shapes(t_object *s)
 			printf("center %.1f,%.1f,%.1f \n", cyl->center.x, cyl->center.y, cyl->center.z);
 			printf("vector_axis_range %.1f,%.1f,%.1f \n", cyl->direct.x, cyl->direct.y, cyl->direct.z);
 			printf("diameter %.1f\n", cyl->diameter);
+			printf("radius %.1f \n", cyl->radius);
 			printf("height %.1f \n", cyl->height);
 			printf("colors %d,%d,%d\n\n", cyl->color.r, cyl->color.g, cyl->color.b);
 		}
