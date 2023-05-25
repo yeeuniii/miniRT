@@ -11,8 +11,8 @@ t_color	apply_diffuse(t_lights lights, t_hitted record)
 	diffuse = vector_inner_product(light_vector, record.normal);
 	if (diffuse < 0)
 		diffuse = 0;
-	diffuse = diffuse * lights.light.bright_ratio / 255;
-	return (vector_multiple(lights.light.color, diffuse));
+	diffuse = diffuse * lights.light.bright_ratio;
+	return (vector_multiple(lights.light.color, diffuse / 255));
 }
 
 t_color	apply_ambient(t_lights lights)
@@ -26,7 +26,7 @@ t_color	apply_ambient(t_lights lights)
 t_color	apply_phong_model(t_lights lights, t_hitted record)
 {
 	t_color	ratio;
-
+	
 	ratio = init_vector(0, 0, 0);
 	ratio = vector_plus(ratio, apply_diffuse(lights, record));
 	ratio = vector_plus(ratio, apply_ambient(lights));
