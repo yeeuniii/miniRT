@@ -23,6 +23,7 @@ t_vector	init_vector(double x, double y, double z);
 void		set_vector(t_vector *vector, double x, double y, double z);
 double		get_vector_size(t_vector vec);
 t_vector 	get_unit_vector(t_vector vec);
+t_vector	get_min_vector(t_vector vec1, t_vector vec2);
 t_vector	vector_plus(t_vector v1, t_vector v2);
 t_vector	vector_minus(t_vector v1, t_vector v2);
 t_vector	vector_multiple(t_vector vec, double r);

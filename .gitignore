@@ -1,0 +1,5 @@
+*.o
+miniRT
+.*.swp
+*libft*
+test

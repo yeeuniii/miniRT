@@ -11,11 +11,11 @@ int	is_hitted(double a, double b, double determinant, t_hitted *record)
 {
 	double	root;
 
-	root = (-b - determinant) / (2 * a);
+	root = (-b - sqrt(determinant)) / (2 * a);
 	record->t = root;
 	if (is_valid_root(root, *record))
 		return (1);
-	root = (-b + determinant) / (2 * a);
+	root = (-b + sqrt(determinant)) / (2 * a);
 	record->t = root;
 	return (is_valid_root(root, *record));
 }

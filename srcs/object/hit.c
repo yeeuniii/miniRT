@@ -19,21 +19,34 @@ int	hit_object(t_object *object, t_ray ray, t_hitted *record)
 int	hit(t_object *objects, t_ray ray, t_hitted *record)
 {	
 	int			is_hitted;
-	t_hitted	object_record;
 	
 	is_hitted = 0;
-	object_record = *record;
 	while (objects)
 	{
-		if (hit_object(objects, ray, &object_record))
+		if (hit_object(objects, ray, record))
 		{
 			is_hitted = 1;
-			object_record.t_max = object_record.t;
-			*record = object_record;
+			record->t_max = record->t;
 		}
 		objects = objects->next;
 	}
 	return (is_hitted);
+}
+
+int	is_shadow(t_lights lights, t_object *objects, t_hitted record)
+{
+	t_vector	light_direct;
+	double		light_length;
+	t_ray		light_ray;
+	t_hitted	shadow_record;
+
+	light_direct = vector_minus(lights.light.origin, record.p);
+	light_length = get_vector_size(light_direct);
+//	light_ray = init_ray(vector_plus(record.p, vector_multiple(record.normal, EPSILON)), get_unit_vector(light_direct));
+	light_ray = init_ray(vector_plus(record.p, vector_multiple(record.normal, 0.000001)), light_direct); // unit 아니고?
+	shadow_record.t_min = 0;
+	shadow_record.t_max = light_length;
+	return (hit(objects, light_ray, &shadow_record));
 }
 
 t_color	get_color(t_lights lights, t_object *objects, t_ray ray)
@@ -41,9 +54,11 @@ t_color	get_color(t_lights lights, t_object *objects, t_ray ray)
 	t_hitted	record;
 
 	(void)lights;
-	record.t_min = 0;
+	record.t_min = EPSILON;
 	record.t_max = INFINITY;
 	if (!hit(objects, ray, &record))
+		return (init_vector(144, 213, 235));
+	if (is_shadow(lights, objects, record))
 		return (init_vector(0, 0, 0));
 	return (apply_phong_model(lights, record));
 }
