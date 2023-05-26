@@ -1,6 +1,6 @@
 #include "../../include/utils.h"
 
-double	check_all_atof(char *str, char **s1, char **s2, t_object *o)
+double	check_all_atof(char *str, t_strs *strs, t_object *o)
 {
 	int	i;
 	int	flag;
@@ -8,14 +8,14 @@ double	check_all_atof(char *str, char **s1, char **s2, t_object *o)
 	i = 0;
 	flag = 0;
 	if (str[i] == '0' && str[i + 1] && str[i + 1] != '.')
-		error_exit("Incorrectly entered number\n", s1, s2, o);
+		error_exit("Incorrectly entered number\n", strs, o);
 	while (str[i])
 	{
 		if (!check_sig_double2(str))
-			error_exit("Too many sign\n", s1, s2, o);
+			error_exit("Too many sign\n", strs, o);
 		if (!ft_isdigit(str[i]) && \
 			(str[i] != '-' && str[i] != '+' && str[i] != '.'))
-			error_exit("Incorrectly entered number\n", s1, s2, o);
+			error_exit("Incorrectly entered number\n", strs, o);
 		if (str[i] == '.')
 			flag = 1;
 		i++;
@@ -26,7 +26,7 @@ double	check_all_atof(char *str, char **s1, char **s2, t_object *o)
 		return (ft_atoi(str));
 }
 
-t_color	check_color_argv(char *str, char **s, t_object *o)
+t_color	check_color_argv(char *str, t_strs *strs, t_object *o)
 {
 	t_color	tml;
 	int		i;
@@ -39,7 +39,7 @@ t_color	check_color_argv(char *str, char **s, t_object *o)
 		if (!check_digit(dest[i]))
 		{
 			free_split(dest);
-			error_exit("Wrong RGB number\n", s, NULL, o);
+			error_exit("Wrong RGB number\n", strs, o);
 		}
 	}
 	tml.x = ft_atoi(dest[0]);
@@ -48,6 +48,6 @@ t_color	check_color_argv(char *str, char **s, t_object *o)
 	free_split(dest);
 	if ((tml.x < 0 || tml.x > 255) || (tml.y < 0 || tml.y > 255) || \
 		(tml.z < 0 || tml.z > 255))
-		error_exit("R G B range is only 0~255\n", s, NULL, o);
+		error_exit("R G B range is only 0~255\n", strs, o);
 	return (tml);
 }

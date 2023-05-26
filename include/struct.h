@@ -59,5 +59,12 @@ typedef struct s_cylinder
 
 }	t_cylinder;
 
+typedef struct s_strs
+{
+	char	*str;
+	char	**s1;
+	char	**s2;
+
+}	t_strs;
 
 #endif
