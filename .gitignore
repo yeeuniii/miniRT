@@ -3,3 +3,4 @@ miniRT
 .*.swp
 *libft*
 test
+.DS_Store
