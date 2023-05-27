@@ -18,7 +18,7 @@ int	hit_object(t_object *object, t_ray ray, t_hitted *record)
 
 int	hit(t_object *objects, t_ray ray, t_hitted *record)
 {	
-	int			is_hitted;
+	int	is_hitted;
 	
 	is_hitted = 0;
 	while (objects)
@@ -42,8 +42,7 @@ int	is_shadow(t_lights lights, t_object *objects, t_hitted record)
 
 	light_direct = vector_minus(lights.light.origin, record.p);
 	light_length = get_vector_size(light_direct);
-//	light_ray = init_ray(vector_plus(record.p, vector_multiple(record.normal, EPSILON)), get_unit_vector(light_direct));
-	light_ray = init_ray(vector_plus(record.p, vector_multiple(record.normal, 0.000001)), light_direct); // unit 아니고?
+	light_ray = init_ray(vector_plus(record.p, vector_multiple(record.normal, EPSILON)), get_unit_vector(light_direct));
 	shadow_record.t_min = 0;
 	shadow_record.t_max = light_length;
 	return (hit(objects, light_ray, &shadow_record));
@@ -55,9 +54,8 @@ t_color	get_color(t_lights lights, t_object *objects, t_ray ray)
 
 	record.t_min = EPSILON;
 	record.t_max = INFINITY;
+
 	if (!hit(objects, ray, &record))
-		return (init_vector(144, 213, 235));
-	if (is_shadow(lights, objects, record))
 		return (init_vector(0, 0, 0));
-	return (apply_phong_model(lights, record));
+	return (apply_phong_model(lights, objects, record));
 }

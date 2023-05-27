@@ -52,8 +52,9 @@ int			hit_sphere(t_sphere sphere, t_ray ray, t_hitted *record);
 
 // phong_model
 
-t_color		apply_phong_model(t_lights lights, t_hitted record);
+t_color		apply_phong_model(t_lights lights, t_object *objects, t_hitted record);
 t_color		apply_ambient(t_lights lights);
+int			is_shadow(t_lights lights, t_object *objects, t_hitted record);
 
 //test
 
