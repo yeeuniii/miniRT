@@ -45,7 +45,6 @@ int	hit_sphere(t_object *object, t_ray ray, t_hitted *record)
 	record->p = point_ray(ray, record->t);
 	record->normal = get_unit_vector(vector_minus(record->p, sphere.center));
 	record->color = sphere.color;
-	if (vector_inner_product(ray.origin, record->normal) > 0)
-		record->normal = vector_multiple(record->normal, -1);
+	set_normal_vector(ray, record);
 	return (1);
 }

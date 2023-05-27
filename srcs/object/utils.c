@@ -8,7 +8,7 @@ int	is_valid_root(double root, t_hitted record)
 
 void	set_normal_vector(t_ray ray, t_hitted *record)
 {
-	if (vector_inner_product(ray.origin, record->normal) > 0)
+	if (vector_inner_product(ray.direct, record->normal) > 0)
 		record->normal = vector_multiple(record->normal, -1);
 }
 

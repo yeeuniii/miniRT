@@ -38,6 +38,14 @@ int	is_shadow(t_lights lights, t_object *objects, t_hitted record)
 	return (hit(objects, light_ray, &shadow_record));
 }
 
+t_color	apply_color(t_color color, t_color ratio)
+{
+	color.x *= ratio.x;
+	color.y *= ratio.y;
+	color.z *= ratio.z;
+	return (get_min_vector(color, init_vector(255, 255, 255)));
+}
+
 t_color	apply_phong_model(t_lights lights, t_object *objects, t_hitted record)
 {
 	t_color	ratio;
@@ -45,15 +53,7 @@ t_color	apply_phong_model(t_lights lights, t_object *objects, t_hitted record)
 	ratio = init_vector(0, 0, 0);
 	ratio = vector_plus(init_vector(0, 0, 0), apply_ambient(lights));
 	if (is_shadow(lights, objects, record))
-	{
-		record.color.x *= ratio.x;
-		record.color.y *= ratio.y;
-		record.color.z *= ratio.z;
-		return (get_min_vector(record.color, init_vector(255, 255, 255)));
-	}
+		return (apply_color(record.color, ratio));
 	ratio = vector_plus(ratio, apply_diffuse(lights, record));
-	record.color.x *= ratio.x;
-	record.color.y *= ratio.y;
-	record.color.z *= ratio.z;
-	return (get_min_vector(record.color, init_vector(255, 255, 255)));
+	return (apply_color(record.color, ratio));
 }
