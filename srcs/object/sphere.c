@@ -20,7 +20,7 @@ double	get_determinant(t_sphere sphere, t_ray ray, double *a, double *b)
 	t_vector	o_c;
 	double		c;
 	double		determinant;
-	
+
 	o_c = vector_minus(ray.origin, sphere.center);
 	*a = vector_inner_product(ray.direct, ray.direct);
 	*b = 2 * vector_inner_product(ray.direct, o_c);

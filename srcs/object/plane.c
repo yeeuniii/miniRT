@@ -23,6 +23,5 @@ int	hit_plane(t_object *object, t_ray ray, t_hitted *record)
 	record->normal = plane.normal;
 	record->color = plane.color;
 	set_normal_vector(ray, record);
-//	printf("%f %f %f\n", );
 	return (1);
 }

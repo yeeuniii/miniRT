@@ -16,7 +16,7 @@ int	hit_object(t_object *object, t_ray ray, t_hitted *record)
 int	hit(t_object *objects, t_ray ray, t_hitted *record)
 {	
 	int	is_hitted;
-	
+
 	is_hitted = 0;
 	while (objects)
 	{
@@ -36,7 +36,6 @@ t_color	get_color(t_lights lights, t_object *objects, t_ray ray)
 
 	record.t_min = EPSILON;
 	record.t_max = INFINITY;
-
 	if (!hit(objects, ray, &record))
 		return (init_vector(0, 0, 0));
 	return (apply_phong_model(lights, objects, record));

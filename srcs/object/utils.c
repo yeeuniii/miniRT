@@ -12,7 +12,8 @@ void	set_normal_vector(t_ray ray, t_hitted *record)
 		record->normal = vector_multiple(record->normal, -1);
 }
 
-int	(*get_object_function(int type))(t_object *object, t_ray ray, t_hitted *record)
+int	(*get_object_function(int type))(
+	t_object *object, t_ray ray, t_hitted *record)
 {
 	if (type == SPHERE)
 		return (hit_sphere);
@@ -20,4 +21,3 @@ int	(*get_object_function(int type))(t_object *object, t_ray ray, t_hitted *reco
 		return (hit_plane);
 	return (hit_sphere);
 }
-
