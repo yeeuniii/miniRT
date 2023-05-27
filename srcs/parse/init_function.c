@@ -18,10 +18,10 @@ void	init_argv(int ac, char **av, t_lights *l, t_object *o)
 	char	*tmp;
 
 	if (ac != 2)
-		error_exit("Wrong argv\n", NULL, NULL, NULL);
+		error_exit("Wrong argv\n", NULL, NULL);
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
-		error_exit("File open error\n", NULL, NULL, NULL);
+		error_exit("File open error\n", NULL, NULL);
 	tmp = get_next_line(fd);
 	while (tmp != NULL)
 	{
@@ -32,52 +32,51 @@ void	init_argv(int ac, char **av, t_lights *l, t_object *o)
 	close(fd);
 }
 
-void	checking_argv(char *tmp, t_lights *l, t_object *s)
+void	checking_argv(char *tmp, t_lights *l, t_object *o)
 {
-	char	**str;
+	t_strs	strs;
 
-	str = ft_split2(tmp);
-	if (!str[0])
+	strs.s1 = ft_split2(tmp);
+	if (!strs.s1[0])
 	{
-		free_split(str);
+		free_split(strs.s1);
 		return ;
 	}
-	if (ft_strcmp(str[0], "A") == 0)
-		init_ambient(str, l);
-	else if (ft_strcmp(str[0], "C") == 0)
-		init_camera(str, l);
-	else if (ft_strcmp(str[0], "L") == 0)
-		init_light(str, l);
-	else if (ft_strcmp(str[0], "sp") == 0)
-		init_sphere(str, s);
-	else if (ft_strcmp(str[0], "pl") == 0)
-		init_plane(str, s);
-	else if (ft_strcmp(str[0], "cy") == 0)
-		init_cylinder(str, s);
+	if (ft_strcmp(strs.s1[0], "A") == 0)
+		init_ambient(&strs, l);
+	else if (ft_strcmp(strs.s1[0], "C") == 0)
+		init_camera(&strs, l);
+	else if (ft_strcmp(strs.s1[0], "L") == 0)
+		init_light(&strs, l);
+	else if (ft_strcmp(strs.s1[0], "sp") == 0)
+		init_sphere(&strs, o);
+	else if (ft_strcmp(strs.s1[0], "pl") == 0)
+		init_plane(&strs, o);
+	else if (ft_strcmp(strs.s1[0], "cy") == 0)
+		init_cylinder(&strs, o);
 	else
-		error_exit("Wrong type\n", str, NULL, s);
-	free_split(str);
+		error_exit("Wrong type\n", &strs, o);
+	free_split(strs.s1);
 }
 
-t_vector	atof_vector(char *str, char **s1, t_object *o)
+t_vector	atof_vector(char *str, t_strs *strs, t_object *o)
 {
 	t_vector	tmp;
-	char		**dest;
 
-	dest = ft_split(str, ',');
-	tmp.x = check_all_atof(dest[0], s1, dest, o);
-	tmp.y = check_all_atof(dest[1], s1, dest, o);
-	tmp.z = check_all_atof(dest[2], s1, dest, o);
-	free_split(dest);
+	strs->s2 = ft_split(str, ',');
+	tmp.x = check_all_atof(strs->s2[0], strs, o);
+	tmp.y = check_all_atof(strs->s2[1], strs, o);
+	tmp.z = check_all_atof(strs->s2[2], strs, o);
+	free_split(strs->s2);
 	return (tmp);
 }
 
-void	init_ambient(char **str, t_lights *l)
+void	init_ambient(t_strs *strs, t_lights *l)
 {
-	if (check_split_count(str) != 3)
-		error_exit("Wrong ambient argc\n", str, NULL, NULL);
-	l->ambient.lighting_ratio = check_all_atof(str[1], str, NULL, NULL);
+	if (check_split_count(strs->s1) != 3)
+		error_exit("Wrong ambient argc\n", strs, NULL);
+	l->ambient.lighting_ratio = check_all_atof(strs->s1[1], strs, NULL);
 	if (l->ambient.lighting_ratio < 0 || l->ambient.lighting_ratio > 1.0)
-		error_exit("lighting_ratio only 0.0~1.0\n", str, NULL, NULL);
-	l->ambient.color = check_color_argv(str[2], str, NULL);
+		error_exit("lighting_ratio only 0.0~1.0\n", strs, NULL);
+	l->ambient.color = check_color_argv(strs->s1[2], strs, NULL);
 }

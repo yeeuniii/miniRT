@@ -1,12 +1,12 @@
 #include "../../include/main.h"
 #include "../../include/utils.h"
 
-void	error_exit(char *str, char **s1, char **s2, t_object *o)
+void	error_exit(char *str, t_strs *strs, t_object *o)
 {
-	if (s1)
-		free_split(s1);
-	if (s2)
-		free_split(s2);
+	if (strs->s1)
+		free_split(strs->s1);
+	if (strs->s2)
+		free_split(strs->s2);
 	if (o)
 		free_objects(o);
 	printf("Error\n");
