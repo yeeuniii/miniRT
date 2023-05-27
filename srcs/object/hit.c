@@ -2,18 +2,23 @@
 #include "../../include/utils.h"
 #include <math.h>
 
+int	is_valid_root(double root, t_hitted record)
+{
+	return (root >= record.t_min && root <= record.t_max);
+}
+
+int	(*get_object_function(int type))(t_object *object, t_ray ray, t_hitted *record)
+{
+	if (type == SPHERE)
+		return (hit_sphere);
+//	if (object->type == PLANE)
+//		return (hit_plane);
+	return (hit_sphere);
+}
+
 int	hit_object(t_object *object, t_ray ray, t_hitted *record)
 {
-	int			is_hitted;
-	t_sphere	*sphere;
-
-	is_hitted = 0;
-	if (object->type == SPHERE)
-	{
-		sphere = (t_sphere *)object->object;
-		is_hitted = hit_sphere(*sphere, ray, record);
-	}
-	return (is_hitted);
+	return ((get_object_function(object->type))(object->object, ray, record));
 }
 
 int	hit(t_object *objects, t_ray ray, t_hitted *record)
@@ -31,21 +36,6 @@ int	hit(t_object *objects, t_ray ray, t_hitted *record)
 		objects = objects->next;
 	}
 	return (is_hitted);
-}
-
-int	is_shadow(t_lights lights, t_object *objects, t_hitted record)
-{
-	t_vector	light_direct;
-	double		light_length;
-	t_ray		light_ray;
-	t_hitted	shadow_record;
-
-	light_direct = vector_minus(lights.light.origin, record.p);
-	light_length = get_vector_size(light_direct);
-	light_ray = init_ray(vector_plus(record.p, vector_multiple(record.normal, EPSILON)), get_unit_vector(light_direct));
-	shadow_record.t_min = 0;
-	shadow_record.t_max = light_length;
-	return (hit(objects, light_ray, &shadow_record));
 }
 
 t_color	get_color(t_lights lights, t_object *objects, t_ray ray)

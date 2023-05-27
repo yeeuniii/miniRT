@@ -2,11 +2,6 @@
 #include "../../include/utils.h"
 #include <math.h>
 
-int	is_valid_root(double root, t_hitted record)
-{
-	return (root >= record.t_min && root <= record.t_max);
-}
-
 int	is_hitted(double a, double b, double determinant, t_hitted *record)
 {
 	double	root;
@@ -20,19 +15,29 @@ int	is_hitted(double a, double b, double determinant, t_hitted *record)
 	return (is_valid_root(root, *record));
 }
 
-int	hit_sphere(t_sphere sphere, t_ray ray, t_hitted *record)
+double	get_determinant(t_sphere sphere, t_ray ray, double *a, double *b)
 {
 	t_vector	o_c;
-	double		a;
-	double		b;
 	double		c;
 	double		determinant;
-
+	
 	o_c = vector_minus(ray.origin, sphere.center);
-	a = vector_inner_product(ray.direct, ray.direct);
-	b = 2 * vector_inner_product(ray.direct, o_c);
+	*a = vector_inner_product(ray.direct, ray.direct);
+	*b = 2 * vector_inner_product(ray.direct, o_c);
 	c = vector_inner_product(o_c, o_c) - sphere.radius * sphere.radius;
-	determinant = b * b - 4 * a * c;
+	determinant = *b * *b - 4 * *a * c;
+	return (determinant);
+}
+
+int	hit_sphere(t_object *object, t_ray ray, t_hitted *record)
+{
+	t_sphere	sphere;
+	double		a;
+	double		b;
+	double		determinant;
+
+	sphere = *(t_sphere *)object;
+	determinant = get_determinant(sphere, ray, &a, &b);
 	if (determinant < 0)
 		return (0);
 	if (!is_hitted(a, b, determinant, record))
