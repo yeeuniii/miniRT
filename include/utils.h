@@ -18,7 +18,7 @@ void		init_cylinder(t_strs *strs, t_object *o);
 void		checking_argv(char *tmp, t_lights *l, t_object *o);
 void		set_camera(t_camera *camera, t_screen screen);
 
-//utils
+//parse_utils
 
 int			check_split_count(char **str);
 int			ft_strcmp(char *s1, char *s2);
@@ -48,9 +48,14 @@ void		draw_objects(t_lights lights, t_object *objects, t_mlx mlx_info);
 t_vector	get_direct(int i, int j, t_screen screen, t_lights lights);
 t_color		get_color(t_lights lights, t_object *objects, t_ray ray);
 
-int			is_valid_root(double root, t_hitted record);
 int			hit(t_object *objects, t_ray ray, t_hitted *record);
 int			hit_sphere(t_object *object, t_ray ray, t_hitted *record);
+int			hit_plane(t_object *object, t_ray ray, t_hitted *record);
+
+// utils
+int			is_valid_root(double root, t_hitted record);
+void		set_normal_vector(t_ray ray, t_hitted *record);
+int			(*get_object_function(int type))(t_object *object, t_ray ray, t_hitted *record);
 
 // phong_model
 

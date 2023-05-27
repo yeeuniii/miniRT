@@ -36,7 +36,9 @@ OBJECT_SRCS = \
 	draw.c \
 	hit.c \
 	sphere.c \
+	plane.c \
 	phong.c \
+	utils.c \
 
 OBJS := \
 	$(addprefix $(SRCS_DIR), $(SRCS:.c=.o)) \

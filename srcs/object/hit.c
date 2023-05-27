@@ -2,23 +2,15 @@
 #include "../../include/utils.h"
 #include <math.h>
 
-int	is_valid_root(double root, t_hitted record)
-{
-	return (root >= record.t_min && root <= record.t_max);
-}
-
-int	(*get_object_function(int type))(t_object *object, t_ray ray, t_hitted *record)
-{
-	if (type == SPHERE)
-		return (hit_sphere);
-//	if (object->type == PLANE)
-//		return (hit_plane);
-	return (hit_sphere);
-}
-
 int	hit_object(t_object *object, t_ray ray, t_hitted *record)
 {
-	return ((get_object_function(object->type))(object->object, ray, record));
+	int	(*object_funct)(t_object *object, t_ray ray, t_hitted *record);
+
+	if (object->type == SPHERE)
+		object_funct = hit_sphere;
+	if (object->type == PLANE)
+		object_funct = hit_plane;
+	return (object_funct(object->object, ray, record));
 }
 
 int	hit(t_object *objects, t_ray ray, t_hitted *record)
