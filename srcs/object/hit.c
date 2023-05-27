@@ -53,7 +53,6 @@ t_color	get_color(t_lights lights, t_object *objects, t_ray ray)
 {
 	t_hitted	record;
 
-	(void)lights;
 	record.t_min = EPSILON;
 	record.t_max = INFINITY;
 	if (!hit(objects, ray, &record))
