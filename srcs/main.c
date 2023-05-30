@@ -9,12 +9,12 @@ int	main(int ac, char **av)
 
 	objects = init_object_start();
 	init_argv(ac, av, &lights, objects);
-	init_mlx(&mlx_info);
+	init_mlx(&mlx_info, &lights, objects);
 	set_camera(&lights.camera, mlx_info.screen);
 	draw_objects(lights, objects, mlx_info);
 	test_lights(&lights);
 	test_shapes(objects);
-	free_objects(objects);
 	mlx_loop(mlx_info.mlx);
+	free_objects(objects);
 	return (0);
 }

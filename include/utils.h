@@ -40,7 +40,7 @@ void		free_objects(t_object *o);
 
 //mlx_functions
 
-void		init_mlx(t_mlx *m);
+void		init_mlx(t_mlx *m, t_lights *lights, t_object *objects);
 
 // object
 
@@ -55,11 +55,13 @@ int			hit_plane(t_object *object, t_ray ray, t_hitted *record);
 // utils
 int			is_valid_root(double root, t_hitted record);
 void		set_normal_vector(t_ray ray, t_hitted *record);
-int			(*get_object_function(int type))(t_object *object, t_ray ray, t_hitted *record);
+int			(*get_object_function(int type)) \
+			(t_object	*object, t_ray ray, t_hitted	*record);
 
 // phong_model
 
-t_color		apply_phong_model(t_lights lights, t_object *objects, t_hitted record);
+t_color		apply_phong_model(t_lights lights, \
+				t_object *objects, t_hitted record);
 t_color		apply_ambient(t_lights lights);
 int			is_shadow(t_lights lights, t_object *objects, t_hitted record);
 

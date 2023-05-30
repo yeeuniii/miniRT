@@ -11,6 +11,12 @@
 # include "get_next_line.h"
 
 # define KEY_ESC 53
+# define FRONT 87
+# define BACK 84
+# define UP 126
+# define DOWN 125
+# define LEFT 123
+# define RIGHT 124
 # define ON_DESTROY 17
 
 # define WIDTH 800
@@ -18,7 +24,7 @@
 # define VIEWPORT_HEIGHT 2.0
 # define EPSILON 0.000001
 
-typedef struct s_object t_object;
+typedef struct s_object	t_object;
 
 typedef enum e_type
 {
@@ -60,12 +66,14 @@ typedef struct s_data
 	int		endian;
 }	t_data;
 
-typedef struct	s_mlx
+typedef struct s_mlx
 {
 	void		*mlx;
 	void		*win;
 	t_data		data;
 	t_screen	screen;
+	t_lights	*lights;
+	t_object	*object;
 }	t_mlx;
 
 typedef struct s_hitted
