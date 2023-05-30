@@ -68,6 +68,7 @@ t_vector	atof_vector(char *str, t_strs *strs, t_object *o)
 	tmp.y = check_all_atof(strs->s2[1], strs, o);
 	tmp.z = check_all_atof(strs->s2[2], strs, o);
 	free_split(strs->s2);
+	strs->s2 = NULL;
 	return (tmp);
 }
 
