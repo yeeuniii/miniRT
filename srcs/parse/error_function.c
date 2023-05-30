@@ -3,10 +3,13 @@
 
 void	error_exit(char *str, t_strs *strs, t_object *o)
 {
-	if (strs->s1)
-		free_split(strs->s1);
-	if (strs->s2)
-		free_split(strs->s2);
+	if (strs)
+	{
+		if (strs->s1)
+			free_split(strs->s1);
+		if (strs->s2)
+			free_split(strs->s2);
+	}
 	if (o)
 		free_objects(o);
 	printf("Error\n");
