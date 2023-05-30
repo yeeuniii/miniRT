@@ -32,7 +32,7 @@ VECTOR_SRCS = \
 	ray.c \
 
 OBJECT_SRCS = \
-	init.c \
+	lights_utils.c \
 	draw.c \
 	hit.c \
 	sphere.c \
