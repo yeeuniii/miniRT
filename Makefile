@@ -1,5 +1,5 @@
 NAME = miniRT
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address -O2
 CLIB = -lmlx -framework OpenGL -framework AppKit -Imlx
 RM = rm -f
 LIBFT_DIR = ./libft/

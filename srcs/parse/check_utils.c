@@ -1,5 +1,40 @@
 #include "../../include/utils.h"
 
+int	check_int_size(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+	{
+		if (str[i + 1] == '.')
+			break ;
+	}
+	if ((str[0] == '-' && i > 11) || i > 10)
+		return (0);
+	else
+		return (1);
+}
+
+double	check_int_max(char *str, int flag, t_strs *strs, t_object *o)
+{
+	long long	tmp;
+	double		dtmp;
+
+	if (flag == 1)
+	{
+		dtmp = ft_atof(str);
+		if (dtmp > 2147483647 || dtmp < -2147483648)
+			error_exit("Only within the range of int", strs, o);
+		else
+			return (dtmp);
+	}
+	tmp = ft_atoi(str);
+	if (tmp > 2147483647 || tmp < -2147483648)
+		error_exit("Only within the range of int", strs, o);
+	return (tmp);
+}
+
 double	check_all_atof(char *str, t_strs *strs, t_object *o)
 {
 	int	i;
@@ -9,10 +44,12 @@ double	check_all_atof(char *str, t_strs *strs, t_object *o)
 	flag = 0;
 	if (str[i] == '0' && str[i + 1] && str[i + 1] != '.')
 		error_exit("Incorrectly entered number\n", strs, o);
+	if (!check_sig_double2(str))
+		error_exit("Too many sign\n", strs, o);
+	if (!check_int_size(str))
+		error_exit("Only within the range of int", strs, o);
 	while (str[i])
 	{
-		if (!check_sig_double2(str))
-			error_exit("Too many sign\n", strs, o);
 		if (!ft_isdigit(str[i]) && \
 			(str[i] != '-' && str[i] != '+' && str[i] != '.'))
 			error_exit("Incorrectly entered number\n", strs, o);
@@ -20,10 +57,7 @@ double	check_all_atof(char *str, t_strs *strs, t_object *o)
 			flag = 1;
 		i++;
 	}
-	if (flag == 1)
-		return (ft_atof(str));
-	else
-		return (ft_atoi(str));
+	return (check_int_max(str, flag, strs, o));
 }
 
 t_color	check_color_argv(char *str, t_strs *strs, t_object *o)

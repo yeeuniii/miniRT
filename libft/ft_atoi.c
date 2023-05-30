@@ -6,11 +6,11 @@
 /*   By: junyoung <junyoung@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 00:25:40 by junyoung          #+#    #+#             */
-/*   Updated: 2023/05/16 13:06:27 by junyoung         ###   ########seoul.kr  */
+/*   Updated: 2023/05/30 17:45:41 by junyoung         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(const char *str)
+long long	ft_atoi(const char *str)
 {
 	int			i;
 	int			sign;
