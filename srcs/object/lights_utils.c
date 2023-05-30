@@ -26,3 +26,11 @@ void	set_camera(t_camera *camera, t_screen screen)
 	tmp = vector_multiple(camera->vertical, camera->viewport_height / 2);
 	camera->left_bottom = vector_minus(camera->left_bottom, tmp);
 }
+
+void	adjust_light(t_light *light, t_hitted record)
+{
+	t_vector	epsilon;
+
+	epsilon = vector_multiple(vector_minus(record.p, light->origin), EPSILON);
+	light->origin = vector_plus(light->origin, epsilon);
+}

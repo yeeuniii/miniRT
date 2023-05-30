@@ -16,7 +16,6 @@ void		init_sphere(t_strs *strs, t_object *o);
 void		init_plane(t_strs *strs, t_object *o);
 void		init_cylinder(t_strs *strs, t_object *o);
 void		checking_argv(char *tmp, t_lights *l, t_object *o);
-void		set_camera(t_camera *camera, t_screen screen);
 
 //parse_utils
 
@@ -44,6 +43,9 @@ void		init_mlx(t_mlx *m, t_lights *lights, t_object *objects);
 
 // object
 
+void		set_camera(t_camera *camera, t_screen screen);
+void		adjust_light(t_light *light, t_hitted record);
+
 void		draw_objects(t_lights lights, t_object *objects, t_mlx mlx_info);
 t_vector	get_direct(int i, int j, t_screen screen, t_lights lights);
 t_color		get_color(t_lights lights, t_object *objects, t_ray ray);
@@ -51,12 +53,12 @@ t_color		get_color(t_lights lights, t_object *objects, t_ray ray);
 int			hit(t_object *objects, t_ray ray, t_hitted *record);
 int			hit_sphere(t_object *object, t_ray ray, t_hitted *record);
 int			hit_plane(t_object *object, t_ray ray, t_hitted *record);
+int			hit_cylinder(t_object *object, t_ray ray, t_hitted *record);
 
 // utils
 int			is_valid_root(double root, t_hitted record);
+int			is_hitted(double a, double b, double determinant, t_hitted *record);
 void		set_normal_vector(t_ray ray, t_hitted *record);
-int			(*get_object_function(int type)) \
-			(t_object	*object, t_ray ray, t_hitted	*record);
 
 // phong_model
 

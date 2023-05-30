@@ -52,6 +52,7 @@ t_color	apply_phong_model(t_lights lights, t_object *objects, t_hitted record)
 {
 	t_color	ratio;
 
+	adjust_light(&lights.light, record);
 	ratio = init_vector(0, 0, 0);
 	ratio = vector_plus(init_vector(0, 0, 0), apply_ambient(lights));
 	if (is_shadow(lights, objects, record))
