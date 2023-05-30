@@ -1,9 +1,23 @@
 #include "../../include/main.h"
 #include "../../include/utils.h"
+#include <math.h>
 
 int	is_valid_root(double root, t_hitted record)
 {
 	return (root >= record.t_min && root <= record.t_max);
+}
+
+int	is_hitted(double a, double b, double determinant, t_hitted *record)
+{
+	double	root;
+
+	root = (-b - sqrt(determinant)) / (2 * a);
+	record->t = root;
+	if (is_valid_root(root, *record))
+		return (1);
+	root = (-b + sqrt(determinant)) / (2 * a);
+	record->t = root;
+	return (is_valid_root(root, *record));
 }
 
 void	set_normal_vector(t_ray ray, t_hitted *record)

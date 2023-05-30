@@ -1,5 +1,6 @@
 NAME = miniRT
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address -O2
+CFLAGS = -Wall -Wextra -Werror -g3 -O2
+#CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address -O2
 CLIB = -lmlx -framework OpenGL -framework AppKit -Imlx
 RM = rm -f
 LIBFT_DIR = ./libft/
@@ -37,6 +38,7 @@ OBJECT_SRCS = \
 	hit.c \
 	sphere.c \
 	plane.c \
+	cylinder.c \
 	phong.c \
 	utils.c \
 

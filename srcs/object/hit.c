@@ -10,6 +10,8 @@ int	hit_object(t_object *object, t_ray ray, t_hitted *record)
 		object_funct = hit_sphere;
 	if (object->type == PLANE)
 		object_funct = hit_plane;
+	if (object->type == CYLINDER)
+		object_funct = hit_cylinder;
 	return (object_funct(object->object, ray, record));
 }
 

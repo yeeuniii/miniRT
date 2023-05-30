@@ -2,31 +2,20 @@
 #include "../../include/utils.h"
 #include <math.h>
 
-int	is_hitted(double a, double b, double determinant, t_hitted *record)
-{
-	double	root;
-
-	root = (-b - sqrt(determinant)) / (2 * a);
-	record->t = root;
-	if (is_valid_root(root, *record))
-		return (1);
-	root = (-b + sqrt(determinant)) / (2 * a);
-	record->t = root;
-	return (is_valid_root(root, *record));
-}
-
-double	get_determinant(t_sphere sphere, t_ray ray, double *a, double *b)
+static double	get_determinant(
+		t_sphere sphere,
+		t_ray ray,
+		double *a,
+		double *b)
 {
 	t_vector	o_c;
 	double		c;
-	double		determinant;
 
 	o_c = vector_minus(ray.origin, sphere.center);
 	*a = vector_inner_product(ray.direct, ray.direct);
 	*b = 2 * vector_inner_product(ray.direct, o_c);
 	c = vector_inner_product(o_c, o_c) - sphere.radius * sphere.radius;
-	determinant = *b * *b - 4 * *a * c;
-	return (determinant);
+	return (*b * *b - 4 * *a * c);
 }
 
 int	hit_sphere(t_object *object, t_ray ray, t_hitted *record)
