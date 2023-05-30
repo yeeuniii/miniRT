@@ -10,3 +10,20 @@ int	check_split_count(char **str)
 		i++;
 	return (i);
 }
+
+int	check_color_dest(char **dest)
+{
+	int	i;
+
+	if (check_split_count(dest) != 3)
+		return (0);
+	i = -1;
+	while (dest[++i])
+	{
+		if (!check_digit(dest[i]))
+		{
+			return (0);
+		}
+	}
+	return (1);
+}

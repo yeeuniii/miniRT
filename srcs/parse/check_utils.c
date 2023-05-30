@@ -1,6 +1,6 @@
 #include "../../include/utils.h"
 
-int	check_int_size(char *str)
+static int	check_int_size(char *str)
 {
 	int	i;
 
@@ -16,7 +16,7 @@ int	check_int_size(char *str)
 		return (1);
 }
 
-double	check_int_max(char *str, int flag, t_strs *strs, t_object *o)
+static double	check_int_max(char *str, int flag, t_strs *strs, t_object *o)
 {
 	long long	tmp;
 	double		dtmp;
@@ -42,7 +42,7 @@ double	check_all_atof(char *str, t_strs *strs, t_object *o)
 
 	i = 0;
 	flag = 0;
-	if (str[i] == '0' && str[i + 1] && str[i + 1] != '.')
+	if ((str[i] == '0' && str[i + 1] && str[i + 1] != '.') || str[0] == '.')
 		error_exit("Incorrectly entered number\n", strs, o);
 	if (!check_sig_double2(str))
 		error_exit("Too many sign\n", strs, o);
@@ -68,13 +68,10 @@ t_color	check_color_argv(char *str, t_strs *strs, t_object *o)
 
 	dest = ft_split(str, ',');
 	i = -1;
-	while (dest[++i])
+	if (!check_color_dest(dest))
 	{
-		if (!check_digit(dest[i]))
-		{
-			free_split(dest);
-			error_exit("Wrong RGB number\n", strs, o);
-		}
+		free_split(dest);
+		error_exit("Wrong RGB number\n", strs, o);
 	}
 	tml.x = ft_atoi(dest[0]);
 	tml.y = ft_atoi(dest[1]);

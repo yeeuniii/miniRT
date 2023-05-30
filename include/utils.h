@@ -25,6 +25,7 @@ int			ft_isspace(char c);
 int			check_digit(char *str);
 int			check_vector_range(t_vector v);
 int			check_sig_double2(char *str);
+int			check_color_dest(char **dest);
 char		**ft_split2(char const *s);
 double		ft_atof(char *str);
 double		check_all_atof(char *str, t_strs *strs, t_object *o);
