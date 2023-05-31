@@ -5,16 +5,16 @@
 
 typedef struct s_ambient
 {
-	double	lighting_ratio; 	//주변조명 비율 0.0~1.0
+	double	lighting_ratio;
 	t_color	color;
 
 }	t_ambient;
 
 typedef struct s_camera
 {
-	t_point		origin;		//뷰포인트 시야점 좌표
-	t_vector	direct;		//3D 정규화 방향 벡터 -1~1
-	double		fov; 		// 수평시야각 0~180
+	t_point		origin;
+	t_vector	direct;
+	double		fov;
 	double		viewport_height;
 	double		viewport_width;
 	t_vector	horizontal;
@@ -25,16 +25,16 @@ typedef struct s_camera
 
 typedef struct s_light
 {
-	t_point		origin;		// 빛이 위치한 좌표
-	double		bright_ratio;	// 빛의 밝기 비율 0.0~1.0
+	t_point		origin;
+	double		bright_ratio;
 	t_color		color;
 
 }	t_light;
 
 typedef struct s_sphere
 {
-	t_point		center;	//구 중심 좌표
-	double		diameter;	//구의 지름
+	t_point		center;
+	double		diameter;
 	double		radius;
 	t_color		color;
 
@@ -42,19 +42,19 @@ typedef struct s_sphere
 
 typedef struct s_plane
 {
-	t_point		point;		//평면위의 한 점의 좌표
-	t_vector	normal;	//3차원 정규화 법선 벡터 -1~1
+	t_point		point;
+	t_vector	normal;
 	t_color		color;
 
 }	t_plane;
 
 typedef struct s_cylinder
 {
-	t_point		center;		//원기둥 중심점의 좌표
-	t_vector	direct;	//3차원 정규화 원기둥 축 벡터 -1~1
-	double		diameter;	//원기둥 지름
-	double		radius;	//원기둥 지름
-	double		height;		//원기둥 높이
+	t_point		center;
+	t_vector	direct;
+	double		diameter;
+	double		radius;
+	double		height;
 	t_color		color;
 
 }	t_cylinder;

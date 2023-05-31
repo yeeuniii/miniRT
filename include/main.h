@@ -31,7 +31,6 @@ typedef enum e_type
 	SPHERE,
 	PLANE,
 	CYLINDER
-
 }	t_type;
 
 typedef struct s_lights

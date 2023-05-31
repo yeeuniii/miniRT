@@ -1,9 +1,9 @@
 #include "../../include/main.h"
 #include "../../include/utils.h"
 
-t_object *init_object_start(void)
+t_object	*init_object_start(void)
 {
-	t_object *o;
+	t_object	*o;
 
 	o = (t_object *)malloc(sizeof(t_object) * 1);
 	o->type = -1;
@@ -64,6 +64,8 @@ t_vector	atof_vector(char *str, t_strs *strs, t_object *o)
 	t_vector	tmp;
 
 	strs->s2 = ft_split(str, ',');
+	if (check_split_count(strs->s2) != 3)
+		error_exit("Wrong count number\n", strs, o);
 	tmp.x = check_all_atof(strs->s2[0], strs, o);
 	tmp.y = check_all_atof(strs->s2[1], strs, o);
 	tmp.z = check_all_atof(strs->s2[2], strs, o);

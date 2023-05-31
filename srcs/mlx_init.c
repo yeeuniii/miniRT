@@ -40,7 +40,6 @@ static int	destroy_game(t_mlx *m)
 	return (0);
 }
 
-
 void	init_mlx(t_mlx *m, t_lights *lights, t_object *objects)
 {
 	t_screen	screen;

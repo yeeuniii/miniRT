@@ -83,5 +83,4 @@ void	init_object(int type, void *object, t_object *o)
 	shape->object = object;
 	shape->next = NULL;
 	tmp->next = shape;
-
 }
