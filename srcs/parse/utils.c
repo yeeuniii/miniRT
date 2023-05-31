@@ -3,7 +3,7 @@
 
 int	ft_strlen(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -28,7 +28,7 @@ int	ft_isspace(char c)
 	return (0);
 }
 
-double ft_atof(char *str)
+double	ft_atof(char *str)
 {
 	int		i;
 	int		sig;
@@ -44,7 +44,7 @@ double ft_atof(char *str)
 		sig *= -1;
 		i++;
 	}
-	while(str[++i] != '.')
+	while (str[++i] != '.')
 		num = num * 10 + str[i] - '0';
 	i = ft_strlen(str);
 	while (str[--i] != '.')

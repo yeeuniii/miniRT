@@ -12,8 +12,6 @@ int	main(int ac, char **av)
 	init_mlx(&mlx_info, &lights, objects);
 	set_camera(&lights.camera, mlx_info.screen);
 	draw_objects(lights, objects, mlx_info);
-	test_lights(&lights);
-	test_shapes(objects);
 	mlx_loop(mlx_info.mlx);
 	free_objects(objects);
 	return (0);

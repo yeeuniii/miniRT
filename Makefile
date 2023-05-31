@@ -25,7 +25,6 @@ PARSE_SRCS = \
 	check_utils.c \
 	error_function.c \
 	ft_split2.c \
-	test.c
 
 VECTOR_SRCS = \
 	calculate.c \
