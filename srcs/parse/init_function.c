@@ -37,6 +37,7 @@ void	checking_argv(char *tmp, t_lights *l, t_object *o)
 	t_strs	strs;
 
 	strs.s1 = ft_split2(tmp);
+	strs.s2 = NULL;
 	if (!strs.s1[0])
 	{
 		free_split(strs.s1);
