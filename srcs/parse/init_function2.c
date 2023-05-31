@@ -34,6 +34,8 @@ void	init_sphere(t_strs *strs, t_object *o)
 	sphere = (t_sphere *)malloc(sizeof(t_sphere) * 1);
 	sphere->center = atof_vector(strs->s1[1], strs, o);
 	sphere->diameter = check_all_atof(strs->s1[2], strs, o);
+	if (sphere->diameter <= 0)
+		error_exit("must be greater than 0\n", strs, o);
 	sphere->radius = sphere->diameter / 2;
 	sphere->color = check_color_argv(strs->s1[3], strs, o);
 	init_object(SPHERE, sphere, o);
@@ -68,6 +70,8 @@ void	init_cylinder(t_strs *strs, t_object *o)
 	cyl->diameter = check_all_atof(strs->s1[3], strs, o);
 	cyl->radius = cyl->diameter / 2;
 	cyl->height = check_all_atof(strs->s1[4], strs, o);
+	if (cyl->diameter <= 0 || cyl->height <= 0)
+		error_exit("must be greater than 0\n", strs, o);
 	cyl->color = check_color_argv(strs->s1[5], strs, o);
 	init_object(CYLINDER, cyl, o);
 }
