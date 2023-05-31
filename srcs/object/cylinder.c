@@ -61,6 +61,36 @@ int	hit_cylinder_side(t_cylinder cylinder, t_ray ray, t_hitted *record)
 	return (1);
 }
 
+int	hit_cylinder_circle(t_cylinder cylinder, t_ray ray, t_hitted *record, int sign)
+{
+	t_point	circle_center;
+	double	p;
+	double	q;
+	double	root;
+	double	length;
+
+	circle_center = vector_plus(cylinder.center,
+		vector_multiple(cylinder.direct, sign * cylinder.height / 2));
+	p = vector_inner_product(cylinder.direct, ray.direct);
+	q = vector_inner_product(cylinder.direct,
+			vector_minus(circle_center, ray.origin));
+	root = q / p;
+	length = get_vector_size(vector_minus(circle_center, point_ray(ray, root)));
+	if (fabs(p) < EPSILON)
+		return (0);
+	if (length > cylinder.radius)
+		return (0);
+	if (!is_valid_root(root, *record))
+		return (0);
+	record->t = root;
+	record->p = point_ray(ray, root);
+	record->t_max = record->t;
+	record->normal = get_unit_vector(vector_multiple(cylinder.direct, sign));
+	set_normal_vector(ray, record);
+	record->color = cylinder.color;
+	return (1);
+}
+
 int	hit_cylinder(t_object *object, t_ray ray, t_hitted *record)
 {
 	t_cylinder	cylinder;
@@ -68,8 +98,8 @@ int	hit_cylinder(t_object *object, t_ray ray, t_hitted *record)
 
 	cylinder = *(t_cylinder *)object;
 	is_hitted = 0;
-//	is_hitted += hit_cylinder_cap(cylinder, ray, record, 1);
-//	is_hitted += hit_cylinder_cap(cylinder, ray, record, 0);
+	is_hitted += hit_cylinder_circle(cylinder, ray, record, 1);
+	is_hitted += hit_cylinder_circle(cylinder, ray, record, -1);
 	is_hitted += hit_cylinder_side(cylinder, ray, record);
 	return (is_hitted);
 }
