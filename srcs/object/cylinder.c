@@ -50,19 +50,23 @@ static void	get_root(
 	equation->root = equation->q / equation->p;
 }
 
-int	hit_cylinder_circle(t_cylinder cylinder, t_ray ray, t_hitted *record, int sign)
+int	hit_cylinder_circle(
+		t_cylinder cylinder,
+		t_ray ray,
+		t_hitted *record,
+		int sign)
 {
 	t_point		circle_center;
 	t_equation	equation;
 	t_vector	hitted_ray;
 	double		length;
-	
+
 	circle_center = vector_plus(cylinder.center,
-		vector_multiple(cylinder.direct, sign * cylinder.height / 2));
+			vector_multiple(cylinder.direct, sign * cylinder.height / 2));
 	get_root(cylinder, ray, &equation, circle_center);
 	hitted_ray = point_ray(ray, equation.root);
 	length = get_vector_size(vector_minus(circle_center, hitted_ray));
-	if (fabs(equation.p) < EPSILON 
+	if (fabs(equation.p) < EPSILON
 		|| length > cylinder.radius
 		|| !is_valid_root(equation.root, *record))
 		return (0);

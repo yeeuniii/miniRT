@@ -10,7 +10,7 @@ int	is_valid_root(double root, t_hitted record)
 int	is_hitted(t_hitted *record, t_equation *equation)
 {
 	double	determinant;
-	
+
 	determinant = sqrt(equation->determinant);
 	equation->root = (-equation->b - determinant) / (2 * equation->a);
 	if (is_valid_root(equation->root, *record))

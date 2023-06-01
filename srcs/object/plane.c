@@ -5,7 +5,7 @@
 static void	get_root(t_plane plane, t_ray ray, t_equation *equation)
 {
 	t_vector	p_o;
-	
+
 	p_o = vector_minus(plane.point, ray.origin);
 	equation->p = vector_inner_product(ray.direct, plane.normal);
 	equation->q = vector_inner_product(p_o, plane.normal);
