@@ -6,7 +6,7 @@ RM = rm -f
 LIBFT_DIR = ./libft/
 LIBFT = libft.a
 MLX_DIR = ./mlx/
-MLX = libmlx.a
+MLX = $(MLX_DIR)/libmlx.a
 
 SRCS_DIR = srcs/
 PARSE_SRCS_DIR = $(SRCS_DIR)parse/

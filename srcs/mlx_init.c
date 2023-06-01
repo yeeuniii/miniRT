@@ -1,5 +1,8 @@
 #include "../include/minirt.h"
 #include "../include/utils.h"
+#include "../mlx/mlx.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 static void	move_camera(t_mlx *m, t_vector vec)
 {

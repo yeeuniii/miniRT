@@ -1,5 +1,6 @@
 #include "../include/minirt.h"
 #include "../include/utils.h"
+#include "../mlx/mlx.h"
 
 int	main(int ac, char **av)
 {

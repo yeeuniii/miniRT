@@ -1,5 +1,6 @@
 #include "../../include/minirt.h"
 #include "../../include/utils.h"
+#include "../../mlx/mlx.h"
 
 void	put_pixel_mlx(t_data *data, int x, int y, int color)
 {
