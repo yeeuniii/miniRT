@@ -24,13 +24,15 @@ int	hit_sphere(t_object *object, t_ray ray, t_hitted *record)
 	double		a;
 	double		b;
 	double		determinant;
+	double		root;
 
 	sphere = *(t_sphere *)object;
 	determinant = get_determinant(sphere, ray, &a, &b);
 	if (determinant < 0)
 		return (0);
-	if (!is_hitted(a, b, determinant, record))
+	if (!is_hitted(a, b, determinant, record, &root))
 		return (0);
+	record->t = root;
 	record->p = point_ray(ray, record->t);
 	record->normal = get_unit_vector(vector_minus(record->p, sphere.center));
 	record->color = sphere.color;

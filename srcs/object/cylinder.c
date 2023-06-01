@@ -22,6 +22,13 @@ static double	get_determinant(
 	return (*b * *b - 4 * *a * c);
 }
 
+int	is_in_finite_cylinder(t_cylinder cylinder, t_point hitted_point, double	*height)
+{
+	*height = vector_inner_product(cylinder.direct,
+			vector_minus(hitted_point, cylinder.center));
+	return (fabs(*height) <= (cylinder.height / 2));
+}
+
 t_vector	get_cylinder_normal(t_cylinder cylinder, t_hitted *record, double height)
 {
 	t_vector	normal;
@@ -33,30 +40,24 @@ t_vector	get_cylinder_normal(t_cylinder cylinder, t_hitted *record, double heigh
 	return (get_unit_vector(normal));
 }
 
-int	is_in_finite_cylinder(t_cylinder cylinder, t_hitted *record)
-{
-	double	height;
-
-	height = vector_inner_product(cylinder.direct,
-			vector_minus(record->p, cylinder.center));
-	record->normal = get_cylinder_normal(cylinder, record, height);
-	return (fabs(height) <= (cylinder.height / 2));
-}
-
 int	hit_cylinder_side(t_cylinder cylinder, t_ray ray, t_hitted *record)
 {
 	double	a;
 	double	b;
 	double	determinant;
+	double	root;
+	double	height;
 
 	determinant = get_determinant(cylinder, ray, &a, &b);
 	if (determinant < 0
-		|| !is_hitted(a, b, determinant, record))
+		|| !is_hitted(a, b, determinant, record, &root))
 		return (0);
-	record->p = point_ray(ray, record->t);
-	if (!is_in_finite_cylinder(cylinder, record))
+	if (!is_in_finite_cylinder(cylinder, point_ray(ray, root), &height))
 		return (0);
+	record->t = root;
+	record->p = point_ray(ray, root);
 	record->color = cylinder.color;
+	record->normal = get_cylinder_normal(cylinder, record, height);
 	set_normal_vector(ray, record);
 	return (1);
 }

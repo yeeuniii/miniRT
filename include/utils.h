@@ -58,7 +58,7 @@ int			hit_cylinder(t_object *object, t_ray ray, t_hitted *record);
 
 // utils
 int			is_valid_root(double root, t_hitted record);
-int			is_hitted(double a, double b, double determinant, t_hitted *record);
+int			is_hitted(double a, double b, double determinant, t_hitted *record, double *root);
 void		set_normal_vector(t_ray ray, t_hitted *record);
 
 // phong_model
