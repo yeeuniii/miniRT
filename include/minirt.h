@@ -44,22 +44,6 @@ typedef struct s_object
 
 }	t_object;
 
-typedef struct s_screen
-{
-	int		width;
-	int		height;
-	double	aspect_ratio;
-}	t_screen;
-
-typedef struct s_data
-{
-	void	*image;
-	char	*addr;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
-}	t_data;
-
 typedef struct s_mlx
 {
 	void		*mlx;
@@ -69,15 +53,5 @@ typedef struct s_mlx
 	t_lights	*lights;
 	t_object	*object;
 }	t_mlx;
-
-typedef struct s_hitted
-{
-	t_point		p;
-	t_vector	normal;
-	double		t_min;
-	double		t_max;
-	double		t;
-	t_color		color;
-}	t_hitted;
 
 #endif

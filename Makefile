@@ -14,7 +14,7 @@ VECTOR_SRCS_DIR = $(SRCS_DIR)vector/
 OBJECT_SRCS_DIR = $(SRCS_DIR)object/
 
 SRCS = main.c \
-	mlx_init.c \
+	mlx.c \
 
 PARSE_SRCS = \
 	get_next_line_utils.c \
