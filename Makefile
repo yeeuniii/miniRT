@@ -5,6 +5,8 @@ CLIB = -lmlx -framework OpenGL -framework AppKit -Imlx
 RM = rm -f
 LIBFT_DIR = ./libft/
 LIBFT = libft.a
+MLX_DIR = ./mlx/
+MLX = libmlx.a
 
 SRCS_DIR = srcs/
 PARSE_SRCS_DIR = $(SRCS_DIR)parse/
@@ -48,12 +50,15 @@ OBJS := \
 	$(addprefix $(OBJECT_SRCS_DIR), $(OBJECT_SRCS:.c=.o)) \
 
 
-all : ${LIBFT} ${NAME}
+all : $(LIBFT) $(MLX) $(NAME)
 
-${LIBFT} :
+$(LIBFT) :
 	@make -C $(LIBFT_DIR) all
 
-${NAME} : ${OBJS} $(LIBFT)
+$(MLX) :
+	@make -C $(MLX_DIR) all
+
+$(NAME) : $(OBJS) $(LIBFT) $(MLX)
 	@$(CC) $(CLIB) $(CFLAGS) $^ -o $@
 
 %.o : %.c
@@ -61,11 +66,12 @@ ${NAME} : ${OBJS} $(LIBFT)
 
 clean :
 	@make -C $(LIBFT_DIR) clean
-	@${RM} ${OBJS}
+	@make -C $(MLX_DIR) clean
+	@$(RM) $(OBJS)
 
 fclean : clean
 	@make -C $(LIBFT_DIR) fclean
-	@${RM} ${NAME}
+	@$(RM) $(NAME)
 
 re :
 	@make fclean
