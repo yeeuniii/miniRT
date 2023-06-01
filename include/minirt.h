@@ -1,14 +1,9 @@
-#ifndef MAIN_H
-# define MAIN_H
+#ifndef MINIRT_H
+# define MINIRT_H
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include <mlx.h>
+//# include <mlx.h>
 # include "../libft/libft.h"
 # include "struct.h"
-# include "get_next_line.h"
 
 # define KEY_ESC 53
 # define FRONT 87
