@@ -24,13 +24,3 @@ void	set_normal_vector(t_ray ray, t_hitted *record)
 	if (vector_inner_product(ray.direct, record->normal) > 0)
 		record->normal = vector_multiple(record->normal, -1);
 }
-
-int	(*get_object_function(int type))(
-	t_object *object, t_ray ray, t_hitted *record)
-{
-	if (type == SPHERE)
-		return (hit_sphere);
-	if (type == PLANE)
-		return (hit_plane);
-	return (hit_sphere);
-}

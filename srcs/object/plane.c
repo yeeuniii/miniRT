@@ -2,19 +2,25 @@
 #include "../../include/utils.h"
 #include <math.h>
 
+static void	get_root(t_plane plane, t_ray ray, t_equation *equation)
+{
+	t_vector	p_o;
+	
+	p_o = vector_minus(plane.point, ray.origin);
+	equation->p = vector_inner_product(ray.direct, plane.normal);
+	equation->q = vector_inner_product(p_o, plane.normal);
+	equation->root = equation->q / equation->p;
+}
+
 int	hit_plane(t_object *object, t_ray ray, t_hitted *record)
 {
 	t_plane		plane;
-	t_vector	p_o;
 	t_equation	equation;
 
 	plane = *(t_plane *)object;
-	p_o = vector_minus(plane.point, ray.origin);
-	equation.p = vector_inner_product(ray.direct, plane.normal);
-	equation.q = vector_inner_product(p_o, plane.normal);
-	equation.root = equation.q / equation.p;
+	get_root(plane, ray, &equation);
 	if (fabs(equation.p) < EPSILON
-			|| !is_valid_root(equation.root, *record))
+		|| !is_valid_root(equation.root, *record))
 		return (0);
 	record->t = equation.root;
 	record->p = point_ray(ray, equation.root);

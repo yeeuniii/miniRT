@@ -17,24 +17,6 @@ static void	get_determinant(t_cylinder cylinder, t_ray ray, t_equation *eq)
 	eq->determinant = eq->b * eq->b - 4 * eq->a * eq->c;
 }
 
-int	is_in_finite_cylinder(t_cylinder cylinder, t_point hitted_point, double	*height)
-{
-	*height = vector_inner_product(cylinder.direct,
-			vector_minus(hitted_point, cylinder.center));
-	return (fabs(*height) <= (cylinder.height / 2));
-}
-
-t_vector	get_cylinder_normal(t_cylinder cylinder, t_hitted *record, double height)
-{
-	t_vector	normal;
-	t_vector	tmp;
-
-	tmp = vector_multiple(cylinder.direct, height);
-	tmp = vector_plus(cylinder.center, tmp);
-	normal = vector_minus(record->p, tmp);
-	return (get_unit_vector(normal));
-}
-
 int	hit_cylinder_side(t_cylinder cylinder, t_ray ray, t_hitted *record)
 {
 	t_equation	equation;
@@ -56,19 +38,28 @@ int	hit_cylinder_side(t_cylinder cylinder, t_ray ray, t_hitted *record)
 	return (1);
 }
 
+static void	get_root(
+		t_cylinder cylinder,
+		t_ray ray,
+		t_equation *equation,
+		t_point center)
+{
+	equation->p = vector_inner_product(cylinder.direct, ray.direct);
+	equation->q = vector_inner_product(cylinder.direct,
+			vector_minus(center, ray.origin));
+	equation->root = equation->q / equation->p;
+}
+
 int	hit_cylinder_circle(t_cylinder cylinder, t_ray ray, t_hitted *record, int sign)
 {
 	t_point		circle_center;
 	t_equation	equation;
 	t_vector	hitted_ray;
 	double		length;
-
+	
 	circle_center = vector_plus(cylinder.center,
 		vector_multiple(cylinder.direct, sign * cylinder.height / 2));
-	equation.p = vector_inner_product(cylinder.direct, ray.direct);
-	equation.q = vector_inner_product(cylinder.direct,
-			vector_minus(circle_center, ray.origin));
-	equation.root = equation.q / equation.p;
+	get_root(cylinder, ray, &equation, circle_center);
 	hitted_ray = point_ray(ray, equation.root);
 	length = get_vector_size(vector_minus(circle_center, hitted_ray));
 	if (fabs(equation.p) < EPSILON 

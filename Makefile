@@ -40,6 +40,7 @@ OBJECT_SRCS = \
 	sphere.c \
 	plane.c \
 	cylinder.c \
+	cylinder_utils.c \
 	phong.c \
 	utils.c \
 

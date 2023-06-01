@@ -60,6 +60,8 @@ int			hit_cylinder(t_object *object, t_ray ray, t_hitted *record);
 int			is_valid_root(double root, t_hitted record);
 int			is_hitted(t_hitted *record, t_equation *equation);
 void		set_normal_vector(t_ray ray, t_hitted *record);
+int			is_in_finite_cylinder(t_cylinder cylinder, t_point hitted_point, double	*height);
+t_vector	get_cylinder_normal(t_cylinder cylinder, t_hitted *record, double height);
 
 // phong_model
 
