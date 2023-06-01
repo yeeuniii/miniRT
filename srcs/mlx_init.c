@@ -1,4 +1,4 @@
-#include "../include/main.h"
+#include "../include/minirt.h"
 #include "../include/utils.h"
 
 static void	move_camera(t_mlx *m, t_vector vec)

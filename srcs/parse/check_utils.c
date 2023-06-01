@@ -63,11 +63,9 @@ double	check_all_atof(char *str, t_strs *strs, t_object *o)
 t_color	check_color_argv(char *str, t_strs *strs, t_object *o)
 {
 	t_color	tml;
-	int		i;
 	char	**dest;
 
 	dest = ft_split(str, ',');
-	i = -1;
 	if (!check_color_dest(dest))
 	{
 		free_split(dest);

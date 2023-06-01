@@ -1,4 +1,4 @@
-#include "../../include/main.h"
+#include "../../include/minirt.h"
 #include "../../include/utils.h"
 
 void	init_camera(t_strs *strs, t_lights *l)

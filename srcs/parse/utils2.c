@@ -1,4 +1,3 @@
-#include "../../include/main.h"
 #include "../../include/utils.h"
 
 static int	check_sig_double(char *str)

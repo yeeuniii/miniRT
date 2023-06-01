@@ -1,4 +1,4 @@
-#include "../../include/main.h"
+#include "../../include/minirt.h"
 
 t_ray	init_ray(t_point origin, t_vector direct)
 {

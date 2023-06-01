@@ -1,6 +1,6 @@
-#include "../../include/main.h"
+#include "../../include/get_next_line.h"
 
-size_t	ft_strlen2(const char *str)
+int	ft_strlen2(const char *str)
 {
 	int	i;
 

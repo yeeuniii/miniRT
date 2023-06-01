@@ -1,4 +1,5 @@
-#include "../../include/main.h"
+#include "../../include/get_next_line.h"
+#include <unistd.h>
 
 static char	*check_line(char *buf, char *backup, int fd)
 {

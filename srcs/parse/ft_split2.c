@@ -1,4 +1,4 @@
-#include "../../include/main.h"
+#include "../../include/minirt.h"
 #include "../../include/utils.h"
 
 static int	check_count(char const *s)

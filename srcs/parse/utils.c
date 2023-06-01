@@ -1,4 +1,3 @@
-#include "../../include/main.h"
 #include "../../include/utils.h"
 
 int	ft_strlen(char *str)

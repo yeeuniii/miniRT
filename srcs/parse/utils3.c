@@ -1,4 +1,3 @@
-#include "../../include/main.h"
 #include "../../include/utils.h"
 
 int	check_split_count(char **str)

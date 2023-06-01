@@ -1,4 +1,4 @@
-#include "../../include/main.h"
+#include "../../include/minirt.h"
 #include "../../include/utils.h"
 
 t_color	apply_diffuse(t_lights lights, t_hitted record)

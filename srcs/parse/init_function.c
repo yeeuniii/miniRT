@@ -1,5 +1,9 @@
-#include "../../include/main.h"
+#include "../../include/minirt.h"
 #include "../../include/utils.h"
+#include "../../include/get_next_line.h"
+#include <unistd.h>
+#include <fcntl.h>
+#include <stdlib.h>
 
 t_object	*init_object_start(void)
 {

@@ -1,4 +1,4 @@
-#include "../include/main.h"
+#include "../include/minirt.h"
 #include "../include/utils.h"
 
 int	main(int ac, char **av)

@@ -1,5 +1,6 @@
-#include "../../include/main.h"
+#include "../../include/minirt.h"
 #include "../../include/utils.h"
+#include <stdio.h>
 
 void	error_exit(char *str, t_strs *strs, t_object *o)
 {
