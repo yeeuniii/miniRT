@@ -2,40 +2,32 @@
 #include "../../include/utils.h"
 #include <math.h>
 
-static double	get_determinant(
-		t_sphere sphere,
-		t_ray ray,
-		double *a,
-		double *b)
+static void	get_determinant(t_sphere sphere, t_ray ray,	t_equation *eq)
 {
 	t_vector	o_c;
-	double		c;
 
 	o_c = vector_minus(ray.origin, sphere.center);
-	*a = vector_inner_product(ray.direct, ray.direct);
-	*b = 2 * vector_inner_product(ray.direct, o_c);
-	c = vector_inner_product(o_c, o_c) - sphere.radius * sphere.radius;
-	return (*b * *b - 4 * *a * c);
+	eq->a = vector_inner_product(ray.direct, ray.direct);
+	eq->b = 2 * vector_inner_product(ray.direct, o_c);
+	eq->c = vector_inner_product(o_c, o_c) - sphere.radius * sphere.radius;
+	eq->determinant = eq->b * eq->b - 4 * eq->a * eq->c;
 }
 
 int	hit_sphere(t_object *object, t_ray ray, t_hitted *record)
 {
 	t_sphere	sphere;
-	double		a;
-	double		b;
-	double		determinant;
-	double		root;
+	t_equation	equation;
 
 	sphere = *(t_sphere *)object;
-	determinant = get_determinant(sphere, ray, &a, &b);
-	if (determinant < 0)
+	get_determinant(sphere, ray, &equation);
+	if (equation.determinant < 0)
 		return (0);
-	if (!is_hitted(a, b, determinant, record, &root))
+	if (!is_hitted(record, &equation))
 		return (0);
-	record->t = root;
+	record->t = equation.root;
 	record->p = point_ray(ray, record->t);
-	record->normal = get_unit_vector(vector_minus(record->p, sphere.center));
 	record->color = sphere.color;
+	record->normal = get_unit_vector(vector_minus(record->p, sphere.center));
 	set_normal_vector(ray, record);
 	return (1);
 }

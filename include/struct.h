@@ -67,4 +67,15 @@ typedef struct s_strs
 
 }	t_strs;
 
+typedef struct	s_equation
+{
+	double	a;
+	double	b;
+	double	c;
+	double	p;
+	double	q;
+	double	determinant;
+	double	root;
+}	t_equation;
+
 #endif

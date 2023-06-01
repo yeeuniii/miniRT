@@ -2,24 +2,19 @@
 #include "../../include/utils.h"
 #include <math.h>
 
-static double	get_determinant(
-		t_cylinder cylinder,
-		t_ray ray,
-		double *a,
-		double *b)
+static void	get_determinant(t_cylinder cylinder, t_ray ray, t_equation *eq)
 {
 	t_vector	o_c;
 	t_vector	cross_d_e;
 	t_vector	cross_oc_e;
-	double		c;
 
 	o_c = vector_minus(ray.origin, cylinder.center);
 	cross_d_e = vector_cross_product(ray.direct, cylinder.direct);
 	cross_oc_e = vector_cross_product(o_c, cylinder.direct);
-	*a = pow(get_vector_size(cross_d_e), 2);
-	*b = 2 * vector_inner_product(cross_d_e, cross_oc_e);
-	c = pow(get_vector_size(cross_oc_e), 2) - pow(cylinder.radius, 2);
-	return (*b * *b - 4 * *a * c);
+	eq->a = pow(get_vector_size(cross_d_e), 2);
+	eq->b = 2 * vector_inner_product(cross_d_e, cross_oc_e);
+	eq->c = pow(get_vector_size(cross_oc_e), 2) - pow(cylinder.radius, 2);
+	eq->determinant = eq->b * eq->b - 4 * eq->a * eq->c;
 }
 
 int	is_in_finite_cylinder(t_cylinder cylinder, t_point hitted_point, double	*height)
@@ -42,20 +37,19 @@ t_vector	get_cylinder_normal(t_cylinder cylinder, t_hitted *record, double heigh
 
 int	hit_cylinder_side(t_cylinder cylinder, t_ray ray, t_hitted *record)
 {
-	double	a;
-	double	b;
-	double	determinant;
-	double	root;
-	double	height;
+	t_equation	equation;
+	t_vector	hitted_ray;
+	double		height;
 
-	determinant = get_determinant(cylinder, ray, &a, &b);
-	if (determinant < 0
-		|| !is_hitted(a, b, determinant, record, &root))
+	get_determinant(cylinder, ray, &equation);
+	if (equation.determinant < 0 || !is_hitted(record, &equation))
 		return (0);
-	if (!is_in_finite_cylinder(cylinder, point_ray(ray, root), &height))
+	hitted_ray = point_ray(ray, equation.root);
+	if (!is_in_finite_cylinder(cylinder, hitted_ray, &height))
 		return (0);
-	record->t = root;
-	record->p = point_ray(ray, root);
+	record->t = equation.root;
+	record->t_max = record->t;
+	record->p = hitted_ray;
 	record->color = cylinder.color;
 	record->normal = get_cylinder_normal(cylinder, record, height);
 	set_normal_vector(ray, record);
@@ -64,31 +58,29 @@ int	hit_cylinder_side(t_cylinder cylinder, t_ray ray, t_hitted *record)
 
 int	hit_cylinder_circle(t_cylinder cylinder, t_ray ray, t_hitted *record, int sign)
 {
-	t_point	circle_center;
-	double	p;
-	double	q;
-	double	root;
-	double	length;
+	t_point		circle_center;
+	t_equation	equation;
+	t_vector	hitted_ray;
+	double		length;
 
 	circle_center = vector_plus(cylinder.center,
 		vector_multiple(cylinder.direct, sign * cylinder.height / 2));
-	p = vector_inner_product(cylinder.direct, ray.direct);
-	q = vector_inner_product(cylinder.direct,
+	equation.p = vector_inner_product(cylinder.direct, ray.direct);
+	equation.q = vector_inner_product(cylinder.direct,
 			vector_minus(circle_center, ray.origin));
-	root = q / p;
-	length = get_vector_size(vector_minus(circle_center, point_ray(ray, root)));
-	if (fabs(p) < EPSILON)
+	equation.root = equation.q / equation.p;
+	hitted_ray = point_ray(ray, equation.root);
+	length = get_vector_size(vector_minus(circle_center, hitted_ray));
+	if (fabs(equation.p) < EPSILON 
+		|| length > cylinder.radius
+		|| !is_valid_root(equation.root, *record))
 		return (0);
-	if (length > cylinder.radius)
-		return (0);
-	if (!is_valid_root(root, *record))
-		return (0);
-	record->t = root;
-	record->p = point_ray(ray, root);
+	record->t = equation.root;
 	record->t_max = record->t;
+	record->p = hitted_ray;
+	record->color = cylinder.color;
 	record->normal = get_unit_vector(vector_multiple(cylinder.direct, sign));
 	set_normal_vector(ray, record);
-	record->color = cylinder.color;
 	return (1);
 }
 
