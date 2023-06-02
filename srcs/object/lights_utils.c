@@ -6,7 +6,7 @@
 /*   By: yeepark <yeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 13:50:51 by yeepark           #+#    #+#             */
-/*   Updated: 2023/06/02 13:50:53 by yeepark          ###   ########.fr       */
+/*   Updated: 2023/06/02 15:29:08 by yeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ void	set_camera(t_camera *camera, t_screen screen)
 	double		tan_fov;
 
 	origin = camera->origin;
-	camera->viewport_height = VIEWPORT_HEIGHT;
-	camera->viewport_width = camera->viewport_height * screen.aspect_ratio;
 	camera->vertical = init_vector(0, 1, 0);
 	if (fabs(camera->direct.y) == 1)
 		camera->vertical = init_vector(0, 0, 1);
@@ -30,8 +28,10 @@ void	set_camera(t_camera *camera, t_screen screen)
 	camera->horizontal = get_unit_vector(camera->horizontal);
 	if (camera->horizontal.x < 0)
 		camera->horizontal = vector_multiple(camera->horizontal, -1);
+	camera->focal_length = FOCAL_LENGTH;
 	tan_fov = tan(camera->fov * M_PI / 360);
-	camera->focal_length = camera->viewport_height / 2 / tan_fov;
+	camera->viewport_width = camera->focal_length * tan_fov;
+	camera->viewport_height = camera->viewport_width / screen.aspect_ratio;
 	tmp = vector_multiple(camera->direct, camera->focal_length);
 	camera->left_bottom = vector_plus(origin, tmp);
 	tmp = vector_multiple(camera->horizontal, camera->viewport_width / 2);

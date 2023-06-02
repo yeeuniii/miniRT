@@ -6,7 +6,7 @@
 /*   By: junyoung <junyoung@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 13:54:40 by junyoung          #+#    #+#             */
-/*   Updated: 2023/06/02 13:54:40 by junyoung         ###   ########seoul.kr  */
+/*   Updated: 2023/06/02 15:24:35 by yeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 
 # define WIDTH 800
 # define HEIGHT 600
-# define VIEWPORT_HEIGHT 4.0
+# define FOCAL_LENGTH 1
 # define EPSILON 0.000001
 
 typedef struct s_object	t_object;
