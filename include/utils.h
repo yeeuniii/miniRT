@@ -3,8 +3,6 @@
 
 # include "minirt.h"
 
-//init_functions
-
 t_vector	atof_vector(char *str, t_strs *strs, t_object *o);
 t_object	*init_object_start(void);
 void		init_argv(int ac, char **av, t_lights *l, t_object *o);
@@ -16,8 +14,6 @@ void		init_sphere(t_strs *strs, t_object *o);
 void		init_plane(t_strs *strs, t_object *o);
 void		init_cylinder(t_strs *strs, t_object *o);
 void		checking_argv(char *tmp, t_lights *l, t_object *o);
-
-//parse_utils
 
 int			check_split_count(char **str);
 int			ft_strcmp(char *s1, char *s2);
@@ -38,11 +34,7 @@ void		free_split(char **str);
 void		error_exit(char *str, t_strs *strs, t_object *o);
 void		free_objects(t_object *o);
 
-//mlx_functions
-
 void		init_mlx(t_mlx *m, t_lights *lights, t_object *objects);
-
-// object
 
 void		set_camera(t_camera *camera, t_screen screen);
 void		adjust_light(t_light *light, t_hitted record);
@@ -56,23 +48,17 @@ int			hit_sphere(t_object *object, t_ray ray, t_hitted *record);
 int			hit_plane(t_object *object, t_ray ray, t_hitted *record);
 int			hit_cylinder(t_object *object, t_ray ray, t_hitted *record);
 
-// utils
 int			is_valid_root(double root, t_hitted record);
 int			is_hitted(t_hitted *record, t_equation *equation);
 void		set_normal_vector(t_ray ray, t_hitted *record);
-int			is_in_finite_cylinder(t_cylinder cylinder, t_point hitted_point, double	*height);
-t_vector	get_cylinder_normal(t_cylinder cylinder, t_hitted *record, double height);
-
-// phong_model
+int			is_in_finite_cylinder(t_cylinder cylinder, \
+			t_point hitted_point, double	*height);
+t_vector	get_cylinder_normal(t_cylinder cylinder, \
+			t_hitted *record, double height);
 
 t_color		apply_phong_model(t_lights lights, \
 				t_object *objects, t_hitted record);
 t_color		apply_ambient(t_lights lights);
 int			is_shadow(t_lights lights, t_object *objects, t_hitted record);
-
-//test
-
-void		test_lights(t_lights *l);
-void		test_shapes(t_object *s);
 
 #endif
