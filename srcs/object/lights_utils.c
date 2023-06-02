@@ -16,7 +16,8 @@ void	set_camera(t_camera *camera, t_screen screen)
 		camera->vertical = init_vector(0, 0, 1);
 	camera->horizontal = vector_cross_product(camera->vertical, camera->direct);
 	camera->horizontal = get_unit_vector(camera->horizontal);
-	camera->horizontal = vector_multiple(camera->horizontal, -1);
+	if (camera->horizontal.x < 0)
+		camera->horizontal = vector_multiple(camera->horizontal, -1);
 	tan_fov = tan(camera->fov * M_PI / 360);
 	camera->focal_length = camera->viewport_height / 2 / tan_fov;
 	tmp = vector_multiple(camera->direct, camera->focal_length);

@@ -3,13 +3,17 @@
 #include "../mlx/mlx.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
-static void	move_camera(t_mlx *m, t_vector vec)
+static void	move_camera(t_mlx *mlx, t_vector moved)
 {
-	m->lights->camera.origin = \
-		vector_plus(m->lights->camera.origin, vec);
-	set_camera(&m->lights->camera, m->screen);
-	draw_objects(*m->lights, m->object, *m);
+	t_camera	camera;
+
+	camera = mlx->lights->camera;
+	camera.origin = vector_plus(camera.origin, moved);
+	set_camera(&camera, mlx->screen);
+	mlx->lights->camera = camera;
+	draw_objects(*mlx->lights, mlx->object, *mlx);
 }
 
 static int	key_press(int keycode, t_mlx *m)
@@ -21,17 +25,17 @@ static int	key_press(int keycode, t_mlx *m)
 		exit(1);
 	}
 	if (keycode == UP)
-		move_camera(m, init_vector(0, 0.5, 0));
+		move_camera(m, init_vector(0, 1, 0));
 	if (keycode == DOWN)
-		move_camera(m, init_vector(0, -0.5, 0));
+		move_camera(m, init_vector(0, -1, 0));
 	if (keycode == LEFT)
-		move_camera(m, init_vector(-0.5, 0, 0));
+		move_camera(m, init_vector(-1, 0, 0));
 	if (keycode == RIGHT)
-		move_camera(m, init_vector(0.5, 0, 0));
+		move_camera(m, init_vector(1, 0, 0));
 	if (keycode == FRONT)
-		move_camera(m, init_vector(0, 0, -0.5));
+		move_camera(m, init_vector(0, 0, -1));
 	if (keycode == BACK)
-		move_camera(m, init_vector(0, 0, 0.5));
+		move_camera(m, init_vector(0, 0, 1));
 	return (0);
 }
 
@@ -63,3 +67,4 @@ void	init_mlx(t_mlx *m, t_lights *lights, t_object *objects)
 	mlx_key_hook(m->win, key_press, m);
 	mlx_hook(m->win, ON_DESTROY, 0, destroy_game, m);
 }
+
