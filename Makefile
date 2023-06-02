@@ -67,7 +67,6 @@ $(NAME) : $(OBJS) $(LIBFT) $(MLX)
 
 clean :
 	@make -C $(LIBFT_DIR) clean
-	@make -C $(MLX_DIR) clean
 	@$(RM) $(OBJS)
 
 fclean : clean

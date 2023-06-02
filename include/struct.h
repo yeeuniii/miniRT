@@ -67,7 +67,7 @@ typedef struct s_strs
 
 }	t_strs;
 
-typedef struct	s_equation
+typedef struct s_equation
 {
 	double	a;
 	double	b;

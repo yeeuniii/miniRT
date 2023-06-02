@@ -67,4 +67,3 @@ void	init_mlx(t_mlx *m, t_lights *lights, t_object *objects)
 	mlx_key_hook(m->win, key_press, m);
 	mlx_hook(m->win, ON_DESTROY, 0, destroy_game, m);
 }
-
