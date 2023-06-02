@@ -6,14 +6,13 @@
 /*   By: junyoung <junyoung@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 13:54:40 by junyoung          #+#    #+#             */
-/*   Updated: 2023/06/02 15:24:35 by yeepark          ###   ########.fr       */
+/*   Updated: 2023/06/02 20:46:15 by yeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-//# include <mlx.h>
 # include "../libft/libft.h"
 # include "struct.h"
 

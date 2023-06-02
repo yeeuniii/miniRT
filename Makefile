@@ -1,6 +1,17 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: yeepark <yeepark@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/06/02 20:46:03 by yeepark           #+#    #+#              #
+#    Updated: 2023/06/02 20:46:05 by yeepark          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = miniRT
 CFLAGS = -Wall -Wextra -Werror -g3 -O2
-#CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address -O2
 CLIB = -lmlx -framework OpenGL -framework AppKit -Imlx
 RM = rm -f
 LIBFT_DIR = ./libft/
@@ -60,7 +71,7 @@ $(MLX) :
 	@make -C $(MLX_DIR) all
 
 $(NAME) : $(OBJS) $(LIBFT) $(MLX)
-	@$(CC) $(CLIB) $(CFLAGS) $^ -o $@
+	$(CC) $(CLIB) $(CFLAGS) $^ -o $@
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
