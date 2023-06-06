@@ -6,7 +6,7 @@
 /*   By: junyoung <junyoung@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 13:51:19 by junyoung          #+#    #+#             */
-/*   Updated: 2023/06/02 13:51:24 by junyoung         ###   ########seoul.kr  */
+/*   Updated: 2023/06/06 12:37:53 by junyoung         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,23 @@ void	free_split(char **str)
 		free(str[i]);
 	free(str);
 	str = NULL;
+}
+
+int	check_comma(char **str)
+{
+	int	i;
+	int	k;
+	int	comma;
+
+	i = -1;
+	k = -1;
+	comma = 0;
+	while (str[++i])
+	{
+		k = -1;
+		while (str[i][++k])
+			if (str[i][k] == ',')
+				comma++;
+	}
+	return (comma);
 }

@@ -6,7 +6,7 @@
 /*   By: junyoung <junyoung@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 13:51:56 by junyoung          #+#    #+#             */
-/*   Updated: 2023/06/02 13:51:57 by junyoung         ###   ########seoul.kr  */
+/*   Updated: 2023/06/06 12:18:00 by junyoung         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,16 @@ void	init_argv(int ac, char **av, t_lights *l, t_object *o)
 	if (fd < 0)
 		error_exit("File open error\n", NULL, NULL);
 	tmp = get_next_line(fd);
+	if (!tmp)
+		error_exit("Empty argv\n", NULL, NULL);
 	while (tmp != NULL)
 	{
 		checking_argv(tmp, l, o);
 		free(tmp);
 		tmp = get_next_line(fd);
 	}
+	if (o->type == -1)
+		error_exit("Empty objects\n", NULL, NULL);
 	close(fd);
 }
 
@@ -93,6 +97,8 @@ t_vector	atof_vector(char *str, t_strs *strs, t_object *o)
 
 void	init_ambient(t_strs *strs, t_lights *l)
 {
+	if (check_comma(strs->s1) != 2)
+		error_exit("Wrong count comma\n", strs, NULL);
 	if (check_split_count(strs->s1) != 3)
 		error_exit("Wrong ambient argc\n", strs, NULL);
 	l->ambient.lighting_ratio = check_all_atof(strs->s1[1], strs, NULL);

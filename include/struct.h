@@ -6,7 +6,7 @@
 /*   By: junyoung <junyoung@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 13:54:43 by junyoung          #+#    #+#             */
-/*   Updated: 2023/06/02 13:54:43 by junyoung         ###   ########seoul.kr  */
+/*   Updated: 2023/06/06 12:27:50 by junyoung         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ typedef struct s_cylinder
 
 typedef struct s_strs
 {
-	char	*str;
 	char	**s1;
 	char	**s2;
 

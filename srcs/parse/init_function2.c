@@ -6,7 +6,7 @@
 /*   By: junyoung <junyoung@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 13:52:06 by junyoung          #+#    #+#             */
-/*   Updated: 2023/06/02 13:52:06 by junyoung         ###   ########seoul.kr  */
+/*   Updated: 2023/06/06 12:10:03 by junyoung         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 void	init_camera(t_strs *strs, t_lights *l)
 {
+	if (check_comma(strs->s1) != 4)
+		error_exit("Wrong count comma\n", strs, NULL);
 	if (check_split_count(strs->s1) != 4)
 		error_exit("Wrong camera argc\n", strs, NULL);
 	l->camera.origin = atof_vector(strs->s1[1], strs, NULL);
@@ -28,6 +30,8 @@ void	init_camera(t_strs *strs, t_lights *l)
 
 void	init_light(t_strs *strs, t_lights *l)
 {
+	if (check_comma(strs->s1) != 4)
+		error_exit("Wrong count comma\n", strs, NULL);
 	if (check_split_count(strs->s1) != 4)
 		error_exit("Wrong light argc\n", strs, NULL);
 	l->light.origin = atof_vector(strs->s1[1], strs, NULL);
@@ -41,6 +45,8 @@ void	init_sphere(t_strs *strs, t_object *o)
 {
 	t_sphere	*sphere;
 
+	if (check_comma(strs->s1) != 4)
+		error_exit("Wrong count comma\n", strs, o);
 	if (check_split_count(strs->s1) != 4)
 		error_exit("Wrong sphere argc\n", strs, o);
 	sphere = (t_sphere *)malloc(sizeof(t_sphere) * 1);
@@ -57,6 +63,8 @@ void	init_plane(t_strs *strs, t_object *o)
 {
 	t_plane		*plane;
 
+	if (check_comma(strs->s1) != 6)
+		error_exit("Wrong count comma\n", strs, o);
 	if (check_split_count(strs->s1) != 4)
 		error_exit("Wrong plane argc\n", strs, o);
 	plane = (t_plane *)malloc(sizeof(t_plane) * 1);
@@ -72,6 +80,8 @@ void	init_cylinder(t_strs *strs, t_object *o)
 {
 	t_cylinder	*cyl;
 
+	if (check_comma(strs->s1) != 6)
+		error_exit("Wrong count comma\n", strs, o);
 	if (check_split_count(strs->s1) != 6)
 		error_exit("Wrong cylinder argc\n", strs, o);
 	cyl = (t_cylinder *)malloc(sizeof(t_cylinder) * 1);

@@ -6,7 +6,7 @@
 /*   By: junyoung <junyoung@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 13:54:48 by junyoung          #+#    #+#             */
-/*   Updated: 2023/06/02 13:54:49 by junyoung         ###   ########seoul.kr  */
+/*   Updated: 2023/06/06 12:14:24 by junyoung         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,12 @@ int			check_digit(char *str);
 int			check_vector_range(t_vector v);
 int			check_sig_double2(char *str);
 int			check_color_dest(char **dest);
+int			check_comma(char **str);
 char		**ft_split2(char const *s);
 double		ft_atof(char *str);
 double		check_all_atof(char *str, t_strs *strs, t_object *o);
 t_color		check_color_argv(char *str, t_strs *strs, t_object *o);
 t_object	*ft_lstlast(t_object *lst);
-
-//error_functions
 
 void		free_split(char **str);
 void		error_exit(char *str, t_strs *strs, t_object *o);
