@@ -6,7 +6,7 @@
 /*   By: junyoung <junyoung@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 13:54:48 by junyoung          #+#    #+#             */
-/*   Updated: 2023/06/06 12:14:24 by junyoung         ###   ########seoul.kr  */
+/*   Updated: 2023/06/22 22:43:10 by yeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int			hit_sphere(t_object *object, t_ray ray, t_hitted *record);
 int			hit_plane(t_object *object, t_ray ray, t_hitted *record);
 int			hit_cylinder(t_object *object, t_ray ray, t_hitted *record);
 
+double		convert_degree_to_radians(double degree);
 int			is_valid_root(double root, t_hitted record);
 int			is_hitted(t_hitted *record, t_equation *equation);
 void		set_normal_vector(t_ray ray, t_hitted *record);

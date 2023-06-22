@@ -6,7 +6,7 @@
 /*   By: yeepark <yeepark@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 13:51:00 by yeepark           #+#    #+#             */
-/*   Updated: 2023/06/02 13:51:02 by yeepark          ###   ########.fr       */
+/*   Updated: 2023/06/22 22:42:42 by yeepark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,9 @@ void	set_normal_vector(t_ray ray, t_hitted *record)
 {
 	if (vector_inner_product(ray.direct, record->normal) > 0)
 		record->normal = vector_multiple(record->normal, -1);
+}
+
+double	convert_degree_to_radians(double degree)
+{
+	return (degree * M_PI / 180);
 }
