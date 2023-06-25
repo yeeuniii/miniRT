@@ -6,7 +6,7 @@
 /*   By: junyoung <junyoung@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 13:51:56 by junyoung          #+#    #+#             */
-/*   Updated: 2023/06/06 12:18:00 by junyoung         ###   ########seoul.kr  */
+/*   Updated: 2023/06/25 19:50:19 by junyoung         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	init_argv(int ac, char **av, t_lights *l, t_object *o)
 
 	if (ac != 2)
 		error_exit("Wrong argv\n", NULL, NULL);
+	if (check_file(av[1]))
+		error_exit("File open error\n", NULL, NULL);
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 		error_exit("File open error\n", NULL, NULL);

@@ -6,7 +6,7 @@
 /*   By: junyoung <junyoung@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/02 13:54:48 by junyoung          #+#    #+#             */
-/*   Updated: 2023/06/22 22:43:10 by yeepark          ###   ########.fr       */
+/*   Updated: 2023/06/25 19:49:14 by junyoung         ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int			check_vector_range(t_vector v);
 int			check_sig_double2(char *str);
 int			check_color_dest(char **dest);
 int			check_comma(char **str);
+int			check_file(char *str);
 char		**ft_split2(char const *s);
 double		ft_atof(char *str);
 double		check_all_atof(char *str, t_strs *strs, t_object *o);
